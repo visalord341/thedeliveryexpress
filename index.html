@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Delivery Express - Europe's largest fully integrated logistics services provider</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0EgKGfShZD-TqL7zyVp5S1ErB13tUgMg&callback=initMap" async defer></script>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <a style="text-decoration: none;" class="logo-text" href="index.html">TDS</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav class="nav-links mobile-nav">
+            <a href="services.html" class="nav-item">Services</a>
+            <a href="solutions.html" class="nav-item">Solutions</a>
+            <a href="partiner.html" class="nav-item">Partner</a>
+            <a href="company.html" class="nav-item">Company</a>
+            <a href="track.html" class="nav-item">Track</a>
+            <a href="support.html" class="nav-item">Support</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="dropbtn" onclick="toggleDropdown(event)">Ship Now <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="domestics.html">Direct Ship</a>
+                    <a href="auth/signup.html">Busines Shipments</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="notification-bar">
+        <div class="ticker-container">
+            <div class="ticker-content">
+                <span>
+                    The Delivery Express does not require OTP or credentials for address confirmation for your delivery.
+                </span>
+                <span>
+                    Our Customer Support team is reachable only from our website or app. Login with your phone number and raise your support request with us.
+                </span>
+                <span>
+                    SERVICE UPDATES: Beware of emails or communications from any other source.
+                </span>
+            </div>
+            <div class="ticker-content" aria-hidden="true">
+                <span>
+                    Delhivery does not require OTP or credentials for address confirmation for your delivery.
+                </span>
+                <span>
+                    Our Customer Support team is reachable only from our website or app. Login with your phone number and raise your support request with us.
+                </span>
+                <span>
+                    SERVICE UPDATES: Beware of emails or communications from any other source.
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="hero-section">
+            <video autoplay loop muted playsinline class="hero-video-background">
+                <source src="mixkit-workers-moving-containers-from-a-cargo-ship-4450-hd-ready.mp4" type="video/mp4">
+                <source src="videos/your-video.webm" type="video/webm">
+                <img src="https://plus.unsplash.com/premium_photo-1661342486992-2a08d4b466ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Logistics background image" style="width:100%; height:100%; object-fit:cover;">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="hero-overlay">
+                <div class="hero-text">
+                    <h1>We are Europe's largest fully integrated <span class="highlight">logistics services</span> provider</h1>
+                    <div class="service-list">
+                        <span class="service-item">Express Parcel</span>
+                        <span class="separator">|</span>
+                        <span class="service-item">PTL</span>
+                        <span class="separator">|</span>
+                        <span class="service-item">FTL</span>
+                        <span class="separator">|</span>
+                        <span class="service-item">Cross Border</span>
+                        <span class="separator">|</span>
+                        <span class="service-item">Supply Chain</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="track-card-container">
+            <div class="track-card">
+                <h2>Track your order through</h2>
+
+                <div class="tracking-options">
+                    <span class="track-option active" data-type="mobile">Mobile</span>
+                    <span class="track-option" data-type="awb">AWB</span>
+                    <span class="track-option" data-type="orderId">Order Id</span>
+                    <span class="track-option" data-type="lrn">LRN</span>
+                </div>
+
+                <div class="tracking-form">
+                    <input type="text" id="tracking-input" placeholder="Enter Mobile Number">
+                    <button class="otp-button" onclick="searchTracking()">Get Location</button>
+                </div>
+
+                <div class="app-downloads">
+                    <p>DOWNLOAD OUR APP</p>
+                    <div class="app-buttons">
+                        <a href="#" class="app-button"><i class="fab fa-google-play"></i> Google Play</a>
+                        <a href="#" class="app-button"><i class="fab fa-apple"></i> App Store</a>
+                    </div>
+                </div>
+
+                <div id="searchResult" style="margin-top: 20px; display: none; padding: 15px; background: #f5f5f5; border-radius: 10px;"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="popup-container" class="popup-container">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <h2 class="popup-title">THE DELIVERY EXPRESS Customer Survey</h2>
+            <p class="popup-message">Help us improve your experience and how we serve you by taking our short 3 minutes survey.</p>
+            <div class="popup-actions">
+                <button class="btn-secondary">No Thanks</button>
+                <button class="btn-primary">Give Feedback</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="stats-section">
+        <div class="stats-header">
+            <h2>Flexibility, Reliability and Scale</h2>
+            <h1>The Answer is <span style="color: red; font-weight: bold;"> The Delivery Express</span></h1>
+        </div>
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-icon-container">
+                    <i class="fas fa-box-open stat-icon"></i>
+                </div>
+                <div class="stat-value">3.4 Bn+</div>
+                <div class="stat-description">Parcels shipped since inception</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon-container">
+                    <i class="fas fa-map-marker-alt stat-icon"></i>
+                </div>
+                <div class="stat-value">99.5%</div>
+                <div class="stat-description">Europe population covered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon-container">
+                    <i class="fas fa-users stat-icon"></i>
+                </div>
+                <div class="stat-value">33K+</div>
+                <div class="stat-description">Businesses served</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon-container">
+                    <i class="fas fa-truck-moving stat-icon"></i>
+                </div>
+                <div class="stat-value">6.1 Mn+</div>
+                <div class="stat-description">Tonnes Freight shipped</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon-container">
+                    <i class="fas fa-warehouse stat-icon"></i>
+                </div>
+                <div class="stat-value">20 Mn+</div>
+                <div class="stat-description">Square feet logistics infrastructure covered</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solutions-section">
+        <div class="solutions-header-container">
+            <h2 class="solutions-title">The Delivery Express's suite of solutions for</h2>
+        </div>
+        <div class="solutions-container">
+            <div class="solution-card">
+                <div class="solution-icon-container">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h3 class="solution-card-title">D2C Brands</h3>
+                <p>We provide an integrated logistics solution built on Express Parcel, Cross Border, Warehousing, Freight and Software value added services that helps brands deliver faster and provide a superior experience.</p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon-container">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 class="solution-card-title">Personal Courier</h3>
+                <p>UK's only online courier solution for all your personal shipping needs. Send from your location to anywhere in the country and internationally with free doorstep pickup and real time tracking through our app.</p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon-container">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3 class="solution-card-title">B2B Enterprises</h3>
+                <p>We provide customised solutions to serve your factory to retailer supply chain end-to-end using our integrated warehousing, technology capabilities and logistics network that improve reliability and reduce cost.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="services-content-wrapper">
+            <div class="services-header-column">
+                <div class="services-header">
+                    <h2>Services that power<br>our solutions<br>ecosystem</h2>
+                </div>
+            </div>
+            <div class="services-cards-column">
+                <div class="services-card">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1598317940377-d1e5402f1bed?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8fDB8fHx8fA%3D%3D" alt="Express Parcel Service" class="card-image">
+                        <div class="card-image-overlay">
+                            <span class="card-title">Express Parcel Service</span>
+                        </div>
+                    </div>
+                    <div class="card-description">
+                        <p>Send shipments across Europe for parcels across categories including heavy goods. Get value added services like RTO reduction tools, door-step inspection and tracking</p>
+                    </div>
+                </div>
+                <div class="services-card">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1664382953403-fc1ac77073a0?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Warehousing" class="card-image">
+                        <div class="card-image-overlay">
+                            <span class="card-title">Warehousing</span>
+                        </div>
+                    </div>
+                    <div class="card-description">
+                        <p>We store inventory across highly optimised locations across the country to fulfil orders originating across both B2C and B2B channels of sale</p>
+                    </div>
+                </div>
+                <div class="services-card">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1633155565182-16c06ed45ec5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Part Truckload Freight" class="card-image">
+                        <div class="card-image-overlay">
+                            <span class="card-title">Part Truckload Freight (PTL)</span>
+                        </div>
+                    </div>
+                    <div class="card-description">
+                        <p>Join one of the largest Express PTL networks in Europe. Get door-to-door and hub-to-hub delivery with additions such as multi-modal freight and client dashboard</p>
+                    </div>
+                </div>
+                <div class="services-card">
+                    <div class="card-image-container">
+                        <img src="https://plus.unsplash.com/premium_photo-1682144324433-ae1ee89a0238?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Full Truckload Freight (FTL)" class="card-image">
+                        <div class="card-image-overlay">
+                            <span class="card-title">Full Truckload Freight (FTL)</span>
+                        </div>
+                    </div>
+                    <div class="card-description">
+                        <p>Move high-volume and high-capacity orders faster with our full Truckload Freight logistics and work with our network of professional Truckload partners as well as our own Fleet</p>
+                        <a href="#" class="know-more">Know More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="services-card">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1716388347831-754d18f7bb2d?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cross Border Service" class="card-image">
+                        <div class="card-image-overlay">
+                            <span class="card-title">Cross Border Service</span>
+                        </div>
+                    </div>
+                    <div class="card-description">
+                        <p>Get door-to-door, port-to-port Express Parcel and Freight services from UK to 220+ countries. Our strategic partners include FedEx and Aramex</p>
+                    </div>
+                </div>
+                <div class="services-card">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1608046304336-241ef14c22fa?q=80&w=1206&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Data Intelligence" class="card-image">
+                        <div class="card-image-overlay">
+                            <span class="card-title">Data Intelligence</span>
+                        </div>
+                    </div>
+                    <div class="card-description">
+                        <p>Power your business with Europe most accurate location intelligence stack. Improve delivery success and gain deep insights about user generated addresses and RTOs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Experience the <strong>operating system</strong> for commerce in Europe</h2>
+            <p>Sign up now to start shipping with The Delivery Express</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button">Personal Courier <i class="fas fa-arrow-right"></i></a>
+                <a href="#" class="cta-button">Business Shipments <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-logo">
+                <span class="logo-text">The Delivery Express</span>
+                <div class="footer-meta">
+                    <p>ISO 9001: 2015, ISO 27001: 2022 Certified Company</p>
+                    <p>CIN: L63090DL2011PLC221234</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-links-container">
+            <div class="footer-column">
+                <h3>SERVICES</h3>
+                <ul>
+                    <li><a href="#">Express Parcel</a></li>
+                    <li><a href="#">Warehousing</a></li>
+                    <li><a href="#">Part Truckload</a></li>
+                    <li><a href="#">Full Truckload</a></li>
+                    <li><a href="#">Cross Border</a></li>
+                    <li><a href="#">Data Intelligence</a></li>
+                    <li><a href="#">Software Platform</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>SOLUTIONS</h3>
+                <ul>
+                    <li><a href="#">D2C Brands</a></li>
+                    <li><a href="#">Personal Courier</a></li>
+                    <li><a href="#">B2B Enterprises</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>PARTNERS</h3>
+                <ul>
+                    <li><a href="#">Franchise Opportunities</a></li>
+                    <li><a href="#">Delivery Partner</a></li>
+                    <li><a href="#">Fleet Owner</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Governance</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">ODR Portal</a></li>
+                    <li><a href="#">Press Release</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>GET IN TOUCH</h3>
+                <ul>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Raise a query</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Rate Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>POLICIES</h3>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Fraud Disclaimer</a></li>
+                    <li><a href="#">ONDC Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <div id="result-popup" class="popup-container" style="display: none;">
+        <div class="popup-content">
+            <span class="popup-close" id="result-popup-close">&times;</span>
+            <div id="popup-result-body">
+                </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Hamburger menu and dropdown toggles
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.target.closest('.dropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        // Popup functionality for the survey
+        window.onload = function() {
+            const popup = document.getElementById('popup-container');
+            const closeBtn = document.querySelector('.popup-close');
+            
+            popup.style.display = 'flex';
+            
+            closeBtn.onclick = function() {
+                popup.style.display = 'none';
+            }
+            
+            window.onclick = function(event) {
+                if (event.target === popup) {
+                    popup.style.display = 'none';
+                }
+            }
+
+            document.querySelector('.btn-primary').onclick = function() {
+                popup.style.display = 'none';
+            };
+
+            document.querySelector('.btn-secondary').onclick = function() {
+                popup.style.display = 'none';
+            };
+        };
+
+        // Close button for the tracking result popup
+        document.getElementById('result-popup-close').onclick = function () {
+            document.getElementById('result-popup').style.display = 'none';
+        }
+
+        window.addEventListener('click', function (e) {
+            const popup = document.getElementById('result-popup');
+            if (e.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+
+        // ===============================================
+        // Corrected and consolidated tracking logic below
+        // ===============================================
+
+        const options = document.querySelectorAll('.track-option');
+        const inputField = document.getElementById('tracking-input');
+        const otpButton = document.querySelector('.otp-button');
+        const resultPopup = document.getElementById('result-popup');
+        const resultBody = document.getElementById('popup-result-body');
+        let selectedTrackingField = 'mobile';
+        let geocoder;
+
+        const placeholders = {
+            'Mobile': 'Enter Mobile Number',
+            'AWB': 'Enter AWB Number',
+            'Order Id': 'Enter Order ID',
+            'LRN': 'Enter LRN Number'
+        };
+
+        // This function is the callback for the Google Maps API
+        function initMap() {
+            geocoder = new google.maps.Geocoder();
+            console.log("Google Maps Geocoder is now available.");
+        }
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                options.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+
+                const selected = option.textContent.trim();
+                inputField.placeholder = placeholders[selected] || 'Enter value';
+
+                selectedTrackingField = {
+                    'Mobile': 'mobile',
+                    'AWB': 'awb',
+                    'Order Id': 'orderId',
+                    'LRN': 'lrn'
+                }[selected] || 'mobile';
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const activeOption = document.querySelector('.track-option.active');
+            if (activeOption) activeOption.click();
+        });
+
+        // Firebase initialization
+        const firebaseConfig = {
+            apiKey: "AIzaSyA13edmqgi4_LG-FNW1yN50HTuhtXUes0g",
+            authDomain: "travis-d095c.firebaseapp.com",
+            projectId: "travis-d095c",
+            storageBucket: "travis-d095c.appspot.com",
+            messagingSenderId: "169773464605",
+            appId: "1:169773464605:web:90584cfa67f8875fc65af4",
+            measurementId: "G-Z24WRV168F"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // This function displays the tracking result in a popup
+        function showTrackingResult(content) {
+            resultBody.innerHTML = content;
+            resultPopup.style.display = 'flex';
+        }
+
+        // The core search and tracking function
+        async function searchTracking() {
+            const inputValue = inputField.value.trim();
+            showTrackingResult("🔍 Searching...");
+
+            if (!inputValue) {
+                showTrackingResult("❌ Please enter a valid value.");
+                return;
+            }
+
+            try {
+                const snapshot = await db.collection("orders").where(selectedTrackingField, "==", inputValue).get();
+                if (snapshot.empty) {
+                    showTrackingResult("❌ No record found.");
+                    return;
+                }
+
+                const data = snapshot.docs[0].data();
+                const createdAt = data.createdAt?.toDate().toLocaleString() || "N/A";
+                const locationAddress = data.location || "Location not specified.";
+
+                if (window.google && window.google.maps && geocoder) {
+                    geocoder.geocode({ 'address': locationAddress }, function(results, status) {
+                        if (status === 'OK' && results[0]) {
+                            const latLng = results[0].geometry.location;
+                            const trackingHtml = `
+                                <h3>📦 Tracking Info</h3>
+                                <p><strong>Status:</strong> ${data.status || 'N/A'}</p>
+                                <p><strong>Location:</strong> ${locationAddress}</p>
+                                <p><strong>ETA:</strong> ${data.eta || 'N/A'}</p>
+                                <p><strong>AWB:</strong> ${data.awb || 'N/A'}</p>
+                                <p><strong>Order ID:</strong> ${data.orderId || 'N/A'}</p>
+                                <p><strong>Mobile:</strong> ${data.mobile || 'N/A'}</p>
+                                <p><strong>Description:</strong> ${data.description || 'N/A'}</p>
+                                <p style="font-size: 12px; color: gray;">Created at: ${createdAt}</p>
+                                <div id="trackingMap" style="height: 300px; width: 100%; margin-top: 15px; border-radius: 8px;"></div>
+                            `;
+                            showTrackingResult(trackingHtml);
+                            const map = new google.maps.Map(document.getElementById('trackingMap'), {
+                                zoom: 15,
+                                center: latLng
+                            });
+                            new google.maps.Marker({
+                                position: latLng,
+                                map: map,
+                                title: locationAddress
+                            });
+                        } else {
+                            const errorHtml = `
+                                <h3>📦 Tracking Info</h3>
+                                <p><strong>Status:</strong> ${data.status || 'N/A'}</p>
+                                <p><strong>Location:</strong> ${locationAddress}</p>
+                                <p><strong>ETA:</strong> ${data.eta || 'N/A'}</p>
+                                <p><strong>AWB:</strong> ${data.awb || 'N/A'}</p>
+                                <p><strong>Order ID:</strong> ${data.orderId || 'N/A'}</p>
+                                <p><strong>Mobile:</strong> ${data.mobile || 'N/A'}</p>
+                                <p><strong>Description:</strong> ${data.description || 'N/A'}</p>
+                                <p style="font-size: 12px; color: gray;">Created at: ${createdAt}</p>
+                                <p>❌ Map could not be loaded for this location.</p>
+                            `;
+                            showTrackingResult(errorHtml);
+                            console.error('Geocode was not successful for the following reason: ' + status);
+                        }
+                    });
+                } else {
+                    showTrackingResult("❌ Google Maps API not loaded. Check your API key and network connection.");
+                }
+            } catch (error) {
+                console.error("Error fetching tracking info:", error);
+                showTrackingResult("❌ Error occurred while searching. Please try again.");
+            }
+        }
+
+        otpButton.addEventListener('click', searchTracking);
+    </script>
+</body>
+</html>

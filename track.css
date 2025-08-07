@@ -1,0 +1,466 @@
+/* Courier Anything Section */
+/* Basic Reset and Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #fff;
+    line-height: 1.5;
+}
+.courier-anything-section {
+    background: url('https://images.unsplash.com/photo-1528797249377-0257bfb1a183?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden; /* Ensure background doesn't overflow */
+}
+
+.courier-anything-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    z-index: 1;
+}
+
+.courier-content-left {
+    flex: 1;
+    max-width: 600px;
+    color: white;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+    padding-right: 40px; /* Space from the right card */
+}
+
+.courier-title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.courier-title .highlight-red {
+    color: #e30613;
+}
+
+.courier-discount {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.courier-discount .discount-percent {
+    color: #e30613;
+    font-weight: 700;
+}
+
+.courier-discount .discount-code {
+    background-color: #e30613;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.courier-app-download {
+    font-size: 16px;
+    color: #ccc;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.courier-app-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.app-store-button, .google-play-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.app-store-button i, .google-play-button i {
+    font-size: 24px;
+}
+
+.app-store-button span, .google-play-button span {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.app-store-button:hover, .google-play-button:hover {
+    background-color: #e30613;
+}
+
+.courier-track-card-container {
+    flex: 0 0 auto; /* Don't grow or shrink */
+    width: 400px; /* Fixed width for the card container */
+    position: relative;
+    z-index: 2;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.courier-track-card .track-card-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.courier-tracking-options {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.courier-tracking-options .track-option {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: #888;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.courier-tracking-options .track-option.active {
+    color: #e30613;
+    border-color: #e30613;
+}
+
+.courier-tracking-options .track-option:hover {
+    color: #e30613;
+}
+
+.courier-tracking-form input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.courier-tracking-form input[type="text"]:focus {
+    border-color: #e30613;
+}
+
+.courier-otp-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #1a1a1a; /* Dark button background */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.courier-otp-button:hover {
+    background-color: #e30613; /* Red on hover */
+}
+
+/* Responsive CSS for Courier Anything Section */
+@media (max-width: 1024px) {
+    .courier-anything-section {
+        flex-direction: column;
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .courier-content-left {
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+
+    .courier-title {
+        font-size: 36px;
+    }
+
+    .courier-app-buttons {
+        justify-content: center;
+    }
+
+    .courier-track-card-container {
+        width: 100%;
+        max-width: 400px; /* Keep max-width for the card */
+    }
+}
+
+@media (max-width: 768px) {
+    .courier-anything-section {
+        padding: 40px 15px;
+    }
+
+    .courier-title {
+        font-size: 30px;
+    }
+
+    .courier-discount {
+        font-size: 18px;
+    }
+
+    .app-store-button, .google-play-button {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+
+    .app-store-button i, .google-play-button i {
+        font-size: 20px;
+    }
+
+    .courier-track-card-container {
+        padding: 20px;
+    }
+
+    .courier-track-card .track-card-title {
+        font-size: 20px;
+    }
+
+    .courier-otp-button {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+/* Support FAQ Section */
+.support-faq-section {
+    background-color: white; /* White background for the whole section */
+    padding: 80px 40px;
+    display: flex;
+    gap: 60px; /* Space between left and right columns */
+    align-items: flex-start; /* Align items to the top */
+    max-width: 1400px; /* Limit overall width */
+    margin: 0 auto;
+}
+
+.support-faq-content-left {
+    flex: 2; /* Take more space for FAQs */
+    max-width: 700px;
+    text-align: left;
+}
+
+.support-faq-header {
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.support-faq-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #333;
+}
+
+/* Accordion styles (reusing from previous FAQ section, ensure they are present) */
+.support-faq-accordion-container {
+    /* Styles for the container of accordion items */
+}
+
+.support-faq-accordion-container .accordion-item {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.support-faq-accordion-container .accordion-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.support-faq-accordion-container .accordion-header {
+    background-color: transparent;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 15px 0;
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.support-faq-accordion-container .accordion-header:hover {
+    color: #e30613;
+}
+
+.support-faq-accordion-container .accordion-icon {
+    transition: transform 0.3s ease;
+}
+
+.support-faq-accordion-container .accordion-header.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.support-faq-accordion-container .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    padding-left: 10px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.support-faq-accordion-container .accordion-item.active .accordion-content {
+    max-height: 500px; /* Adjust based on expected content height */
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.support-faq-accordion-container .accordion-content p {
+    padding: 0;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+.support-faq-content-right {
+    flex: 1; /* Take less space for images and CTA */
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between elements in the right column */
+    background-color: #1a1a1a; /* Dark background for the right column */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: white; /* Text color for elements in this column */
+}
+
+.support-faq-image-card {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.support-faq-right-image {
+    width: 100%;
+    height: 200px; /* Fixed height for images in the right column */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.support-faq-cta-card {
+    text-align: center;
+}
+
+.ship-friends-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    background-color: #e30613; /* Red background for CTA button */
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.ship-friends-cta:hover {
+    background-color: #ff3344; /* Slightly lighter red on hover */
+}
+
+/* Responsive CSS for Support FAQ Section */
+@media (max-width: 1024px) {
+    .support-faq-section {
+        flex-direction: column;
+        gap: 40px;
+        padding: 60px 20px;
+        align-items: center;
+    }
+
+    .support-faq-content-left {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .support-faq-header {
+        margin: 0 auto 40px;
+        border-bottom: none;
+    }
+
+    .support-faq-header::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .support-faq-title {
+        font-size: 32px;
+    }
+
+    .support-faq-content-right {
+        max-width: 100%;
+        width: 100%; /* Take full width on smaller screens */
+        padding: 20px;
+    }
+
+    .support-faq-right-image {
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .support-faq-section {
+        padding: 40px 15px;
+    }
+
+    .support-faq-title {
+        font-size: 28px;
+    }
+
+    .support-faq-right-image {
+        height: 150px;
+    }
+
+    .ship-friends-cta {
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+}

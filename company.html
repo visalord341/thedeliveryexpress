@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Delivery Express|Company</title>
+    <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="services.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.target.closest('.dropdown');
+            dropdown.classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+
+  <header class="navbar">
+        <div class="logo">
+            <a style="text-decoration: none;" class="logo-text" href="index.html">TDE</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+       <nav class="nav-links mobile-nav">
+            <a href="services.html" class="nav-item">Services</a>
+            <a href="solutions.html" class="nav-item">Solutions</a>
+            <a href="partiner.html" class="nav-item">Partner</a>
+            <a href="company.html" class="nav-item">Company</a>
+            <a href="track.html" class="nav-item">Track</a>
+            <a href="support.html" class="nav-item">Support</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="dropbtn" onclick="toggleDropdown(event)">Ship Now <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="domestics.html">Direct Ship</a>
+                    <a href="international.html">Busines Shipments</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Notification Bar -->
+    <div class="notification-bar">
+    <div class="ticker-container">
+        <div class="ticker-content">
+            <span>
+                Delhivery does not require OTP or credentials for address confirmation for your delivery.
+            </span>
+            <span>
+                Our Customer Support team is reachable only from our website or app. Login with your phone number and raise your support request with us.
+            </span>
+            <span>
+                SERVICE UPDATES: Beware of emails or communications from any other source.
+            </span>
+        </div>
+        <div class="ticker-content" aria-hidden="true">
+            <span>
+                Delhivery does not require OTP or credentials for address confirmation for your delivery.
+            </span>
+            <span>
+                Our Customer Support team is reachable only from our website or app. Login with your phone number and raise your support request with us.
+            </span>
+            <span>
+                SERVICE UPDATES: Beware of emails or communications from any other source.
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content Herro -->
+<section class="new-hero-section">
+    <div class="hero-image-container">
+        <img src="https://images.unsplash.com/photo-1501700493788-fa1a4fc9fe62?q=80&w=1089&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Two men on a boat in a river, symbolizing logistics and delivery" class="hero-background-image">
+        <div class="hero-overlay-dark"></div>
+    </div>
+    <div class="hero-content">
+        <h1 class="hero-title">We are building the Operating <Span style="color: red;"> System for Commerce</Span></h1>
+        <p class="hero-subtitle">Trusted partner for small businesses, large marketplaces and every type of business</p>
+        <a href="#" class="hero-cta-button">
+            Sign Up as a Business <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Express Parcel Section -->
+<section class="express-parcel-section">
+    <div class="express-parcel-content">
+        <h2 class="express-parcel-title">About The Delivery Express</h2>
+        <p class="express-parcel-description">
+            We are UK largest fully integrated logistics provider. We aim to build the operating system for commerce, through a combination of world-class infrastructure, logistics operations of the highest quality and cutting-edge engineering and technology capabilities.
+            Since its inception in 2011, our team has successfully fulfilled over 2 billion orders across India. We have built a nation-wide network with a presence in every state, servicing over 18,700+ pin codes. 24 automated sort centres, 94 gateways, 2880 direct delivery centres, and a team of over 57,000 people make it possible for us to deliver 24 hours a day, 7 days a week, 365 days a year.
+    </div>
+    <div class="express-parcel-image-container">
+        <img src="https://plus.unsplash.com/premium_photo-1663950995404-e18773895f8c?q=80&w=1075&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Person delivering a parcel in a snowy mountain landscape" class="express-parcel-image">
+        <div class="express-parcel-deco-red-top"></div>
+        <div class="express-parcel-deco-red-bottom"></div>
+        <div class="express-parcel-deco-black-top"></div>
+        <div class="express-parcel-deco-black-bottom"></div>
+    </div>
+</section>
+
+<!-- Data Science Section -->
+<section class="mission-section">
+    <div class="mission-header">
+        <h2 class="mission-title">Mission</h2>
+    </div>
+    <div class="mission-content">
+        <p>Our mission is to enable customers to operate flexible, reliable and resilient supply chains at the lowest costs. We provided supply chain solutions to a diverse base of over 30K+ active customers such as e-commerce marketplaces, direct-to-consumer e-tailers and enterprises and SMEs across several verticals such as FMCG, consumer durables, consumer electronics, lifestyle, retail, automotive and manufacturing.</p>
+        <p>This is achieved through high-quality logistics infrastructure and network engineering, a vast network of domestic and global partners and significant investments in automation, all of which are orchestrated by our self-developed logistics operating system that drive network synergies within and across our services and enhance our value proposition to customers.</p>
+    </div>
+</section>
+
+<!-- Locations Section -->
+<section class="locations-section">
+    <div class="locations-header">
+        <h2 class="locations-title">Key Corporate locations across the country</h2>
+    </div>
+    <div class="locations-content-wrapper">
+        <div class="locations-list">
+            <div class="location-item">
+                <h3 class="location-city">Gurgaon</h3>
+                <p class="location-address">Plot 5, sector 44 Gurgaon, Haryana - 122001</p>
+            </div>
+            <div class="location-item">
+                <h3 class="location-city">Goa</h3>
+                <p class="location-address">Plot No.59A-1 and 59A-2, Pilerne Industrial Estate, Pilerne, Bardez, Goa - 403521</p>
+            </div>
+            <div class="location-item">
+                <h3 class="location-city">Bangalore</h3>
+                <p class="location-address">Prestige Towers, 6th floor, 99 & 100, Residency Rd, infront of Cash Pharmacy, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka - 560025</p>
+            </div>
+            <div class="location-item">
+                <h3 class="location-city">Hyderabad</h3>
+                <p class="location-address">Aurobindo Galaxy, Plot No. 1 forming part of Sy. No. 83/1, Hyderabad Knowledge City, Raidurg, Hyderabad - 500081</p>
+            </div>
+            <div class="location-item">
+                <h3 class="location-city">Mumbai</h3>
+                <p class="location-address">Building No. 1, 5th Floor, CTS No. 101, Village Kole Kalyan, Santacruz (East), Mumbai - 400098</p>
+            </div>
+            <div class="location-item">
+                <h3 class="location-city">Chennai</h3>
+                <p class="location-address">Block A, 1st Floor, Phase II, DLF IT Park, 1/124, Mount Poonamallee Rd, Manapakkam, Chennai - 600089</p>
+            </div>
+        </div>
+        <div class="locations-map-container">
+            <!-- This is a placeholder for the map visual -->
+            <img src="https://images.unsplash.com/photo-1661577804141-6f0180f82373?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Map of UK with highlighted locations" class="locations-map-image">
+        </div>
+    </div>
+</section>
+
+<!-- Careers Section -->
+<section class="careers-section">
+    <div class="careers-content">
+        <div class="careers-header">
+            <h2 class="careers-title">Explore a career with The Delivery </h2>
+        </div>
+        <p class="careers-description">We're looking for curious, passionate people with a desire to solve challenging business problems. We move fast, operate under pressure and with limited resources. If you have a deep interest to relentlessly move our business forward and share our joy at making the world a smaller place, apply below</p>
+        <div class="careers-buttons">
+            <a href="#" class="careers-button">
+                See Job Openings <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#" class="careers-button">
+                Download Partner App <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="careers-image-container">
+        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="People working in logistics" class="careers-image">
+        <div class="careers-image-deco-red"></div>
+    </div>
+</section>
+
+
+<!-- Grow Brand Section -->
+<section class="grow-brand-section">
+    <div class="grow-brand-header">
+        <h2 class="grow-brand-title">Grow your brand through our <span class="highlight-red">technology driven</span> logistics platform</h2>
+    </div>
+    <div class="brand-cards-container">
+        <div class="brand-card">
+            <div class="brand-icon-container">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <h3 class="brand-card-title">API integration</h3>
+            <p class="brand-card-description">Seamlessly integrate your sales channels (like Website, Marketplaces) with our built in integrations</p>
+        </div>
+        <div class="brand-card">
+            <div class="brand-icon-container">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="brand-card-title">RTO Predictor</h3>
+            <p class="brand-card-description">Over 2 Billion shipments have trained our Machine Learning algorithms to call out potential RTOs</p>
+        </div>
+        <div class="brand-card">
+            <div class="brand-icon-container">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="brand-card-title">Address validation</h3>
+            <p class="brand-card-description">Increase deliverability using our address intelligence products to validate and standardise</p>
+        </div>
+        <div class="brand-card">
+            <div class="brand-icon-container">
+                <i class="fas fa-clipboard-list"></i>
+            </div>
+            <h3 class="brand-card-title">Non Delivery Management</h3>
+            <p class="brand-card-description">Reduce Return-To-Origin using our WhatsApp communication services and business intelligence product suite</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-logo">
+                <span class="logo-text">The Delivery Express</span>
+                <div class="footer-meta">
+                    <p>ISO 9001: 2015, ISO 27001: 2022 Certified Company</p>
+                    <p>CIN: L63090DL2011PLC221234</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-links-container">
+            <div class="footer-column">
+                <h3>SERVICES</h3>
+                <ul>
+                    <li><a href="#">Express Parcel</a></li>
+                    <li><a href="#">Warehousing</a></li>
+                    <li><a href="#">Part Truckload</a></li>
+                    <li><a href="#">Full Truckload</a></li>
+                    <li><a href="#">Cross Border</a></li>
+                    <li><a href="#">Data Intelligence</a></li>
+                    <li><a href="#">Software Platform</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>SOLUTIONS</h3>
+                <ul>
+                    <li><a href="#">D2C Brands</a></li>
+                    <li><a href="#">Personal Courier</a></li>
+                    <li><a href="#">B2B Enterprises</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>PARTNERS</h3>
+                <ul>
+                    <li><a href="#">Franchise Opportunities</a></li>
+                    <li><a href="#">Delivery Partner</a></li>
+                    <li><a href="#">Fleet Owner</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Governance</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">ODR Portal</a></li>
+                    <li><a href="#">Press Release</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>GET IN TOUCH</h3>
+                <ul>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Raise a query</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Rate Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>POLICIES</h3>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Fraud Disclaimer</a></li>
+                    <li><a href="#">ONDC Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

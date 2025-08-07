@@ -1,0 +1,2367 @@
+/* New Hero Section */
+/* Basic Reset and Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #fff;
+    line-height: 1.5;
+}
+
+.new-hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    color: white;
+}
+
+.hero-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero-background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay-dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 600px;
+}
+
+.hero-title {
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-title strong {
+    font-weight: 700;
+    color: #fff;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.hero-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background-color: white;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.hero-cta-button:hover {
+    background-color: #e30613;
+    color: white;
+}
+
+/* New Responsive CSS for this section */
+@media (max-width: 768px) {
+    .new-hero-section {
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+}
+
+/* Express Parcel Section */
+.express-parcel-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    background-color: white;
+    gap: 80px;
+}
+
+.express-parcel-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.express-parcel-title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.express-parcel-title .highlight-red {
+    color: #e30613;
+}
+
+.express-parcel-description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.express-parcel-image-container {
+    position: relative;
+    flex: 1;
+    max-width: 600px;
+    height: 400px;
+    background-color: #1a1a1a; /* Background for the black part */
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex; /* To center the image */
+    justify-content: center;
+    align-items: center;
+}
+
+.express-parcel-image {
+    width: 90%; /* Adjust image size within its container */
+    height: 90%;
+    object-fit: cover;
+    border-radius: 8px;
+    z-index: 2; /* Ensure image is above decorations */
+}
+
+/* Decorative elements */
+.express-parcel-deco-red-top {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    background-color: #e30613;
+    z-index: 1;
+    transform: rotate(45deg);
+    border-radius: 8px;
+}
+
+.express-parcel-deco-red-bottom {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 80px;
+    height: 80px;
+    background-color: #e30613;
+    z-index: 1;
+    transform: rotate(45deg);
+    border-radius: 8px;
+}
+
+.express-parcel-deco-black-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: #1a1a1a;
+    z-index: 0; /* Behind the image */
+    transform: rotate(45deg) translateX(-50%) translateY(-50%);
+    transform-origin: top left;
+}
+
+.express-parcel-deco-black-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background-color: #1a1a1a;
+    z-index: 0; /* Behind the image */
+    transform: rotate(45deg) translateX(50%) translateY(50%);
+    transform-origin: bottom right;
+}
+
+/* Responsive CSS for Express Parcel Section */
+@media (max-width: 1024px) {
+    .express-parcel-section {
+        flex-direction: column;
+        gap: 40px;
+        padding: 60px 20px;
+    }
+
+    .express-parcel-content {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .express-parcel-title {
+        font-size: 38px;
+    }
+
+    .express-parcel-image-container {
+        max-width: 100%;
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .express-parcel-section {
+        padding: 40px 15px;
+    }
+
+    .express-parcel-title {
+        font-size: 32px;
+    }
+
+    .express-parcel-image-container {
+        height: 280px;
+    }
+
+    /* Hide some decorative elements on smaller screens if they become too cluttered */
+    .express-parcel-deco-red-bottom,
+    .express-parcel-deco-black-top,
+    .express-parcel-deco-black-bottom {
+        display: none;
+    }
+}
+
+/* Data Science Section */
+.data-science-section {
+    background-color: #1a1a1a; /* Dark background as per image */
+    color: white;
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.data-science-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: left; /* Align title to the left */
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.data-science-title {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.data-science-title .highlight-white {
+    font-weight: 700;
+    color: white;
+}
+
+.data-science-stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.data-science-stat-card {
+    flex: 1;
+    min-width: 280px; /* Ensure cards don't get too small */
+    max-width: 350px; /* Max width for larger screens */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    background-color: #1a1a1a; /* Same as section background, for consistency */
+    border-radius: 8px;
+}
+
+.data-science-icon-container {
+    background-color: #e30613; /* Red background for icon */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(227, 6, 19, 0.3); /* Subtle shadow for icon */
+}
+
+.data-science-icon-container i {
+    font-size: 40px;
+    color: white;
+}
+
+.data-science-stat-value {
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.data-science-stat-description {
+    font-size: 16px;
+    color: #b0b0b0; /* Lighter grey for description */
+    line-height: 1.5;
+}
+
+/* Responsive CSS for Data Science Section */
+@media (max-width: 1024px) {
+    .data-science-section {
+        padding: 60px 20px;
+    }
+
+    .data-science-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none; /* Remove underline for mobile header */
+    }
+
+    .data-science-header::after { /* Add a centered underline for mobile */
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .data-science-title {
+        font-size: 32px;
+    }
+
+    .data-science-stats-container {
+        gap: 30px;
+    }
+
+    .data-science-stat-card {
+        min-width: 250px;
+        max-width: 400px; /* Allow cards to take more width if space allows */
+    }
+
+    .data-science-stat-value {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .data-science-section {
+        padding: 40px 15px;
+    }
+
+    .data-science-title {
+        font-size: 28px;
+    }
+
+    .data-science-stats-container {
+        flex-direction: column; /* Stack cards vertically on smaller phones */
+        align-items: center;
+    }
+
+    .data-science-stat-card {
+        width: 100%; /* Full width for cards on small screens */
+        max-width: 300px; /* Max width for consistency */
+    }
+}
+
+
+/* Drive Efficiency Section */
+.drive-efficiency-section {
+    background-color: #f7f7f7; /* Light grey background */
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.drive-efficiency-header {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    text-align: left;
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.drive-efficiency-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #333;
+}
+
+.efficiency-cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+}
+
+.efficiency-card {
+    flex: 1;
+    min-width: 250px; /* Minimum width for cards */
+    max-width: 300px; /* Maximum width for cards */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left within the card */
+    padding: 20px;
+    background-color: white; /* White background for cards */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    transition: transform 0.3s ease;
+}
+
+.efficiency-card:hover {
+    transform: translateY(-5px);
+}
+
+.efficiency-icon-container {
+    width: 60px;
+    height: 60px;
+    background-color: #f7f7f7; /* Light grey background for icon circle */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #eee; /* Light border */
+}
+
+.efficiency-icon-container i {
+    font-size: 30px;
+    color: #e30613; /* Red icon color */
+}
+
+.efficiency-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.efficiency-card-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* Responsive CSS for Drive Efficiency Section */
+@media (max-width: 1024px) {
+    .drive-efficiency-section {
+        padding: 60px 20px;
+    }
+
+    .drive-efficiency-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none; /* Remove underline for mobile header */
+    }
+
+    .drive-efficiency-header::after { /* Add a centered underline for mobile */
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .drive-efficiency-title {
+        font-size: 32px;
+    }
+
+    .efficiency-cards-container {
+        gap: 20px;
+    }
+
+    .efficiency-card {
+        min-width: unset; /* Remove min-width to allow more flexibility */
+        width: 45%; /* Adjust width for two columns on tablets */
+        align-items: center; /* Center content for smaller screens */
+        text-align: center;
+    }
+
+    .efficiency-card-title,
+    .efficiency-card-description {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .drive-efficiency-section {
+        padding: 40px 15px;
+    }
+
+    .drive-efficiency-title {
+        font-size: 28px;
+    }
+
+    .efficiency-card {
+        width: 100%; /* Full width for cards on smaller phones */
+        max-width: 350px; /* Optional: limit max width even at 100% */
+    }
+}
+
+/* Segments Section */
+.segments-section {
+    background-color: #1a1a1a; /* Dark background */
+    color: white;
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.segments-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: left;
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.segments-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.segments-title .highlight-red {
+    color: #e30613;
+}
+
+.segments-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
+    gap: 40px 20px; /* Row gap, column gap */
+    justify-content: center;
+    max-width: 1200px; /* Limit overall width */
+    margin: 0 auto;
+}
+
+.segment-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.segment-icon-container {
+    width: 80px;
+    height: 80px;
+    background-color: #e30613; /* Red background for icon */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(227, 6, 19, 0.3); /* Subtle shadow */
+}
+
+.segment-icon-container i {
+    font-size: 40px;
+    color: white;
+}
+
+.segment-icon-container.social-icons {
+    background-color: transparent; /* No background for social icons */
+    box-shadow: none;
+    display: flex;
+    gap: 10px; /* Space between social icons */
+    width: auto;
+    height: auto;
+    border-radius: 0;
+}
+
+.segment-icon-container.social-icons i {
+    font-size: 40px;
+    color: #e30613; /* Red color for social icons */
+}
+
+
+.segment-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin-top: 10px;
+}
+
+/* Responsive CSS for Segments Section */
+@media (max-width: 1024px) {
+    .segments-section {
+        padding: 60px 20px;
+    }
+
+    .segments-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none; /* Remove underline for mobile header */
+    }
+
+    .segments-header::after { /* Add a centered underline for mobile */
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .segments-title {
+        font-size: 32px;
+    }
+
+    .segments-cards-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+        gap: 30px 15px;
+    }
+
+    .segment-icon-container {
+        width: 70px;
+        height: 70px;
+    }
+
+    .segment-icon-container i {
+        font-size: 35px;
+    }
+
+    .segment-icon-container.social-icons i {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .segments-section {
+        padding: 40px 15px;
+    }
+
+    .segments-title {
+        font-size: 28px;
+    }
+
+    .segments-cards-container {
+        grid-template-columns: 1fr; /* 1 column on smaller phones */
+        gap: 20px;
+    }
+
+    .segment-card {
+        padding: 15px;
+    }
+
+    .segment-icon-container {
+        width: 60px;
+        height: 60px;
+    }
+
+    .segment-icon-container i {
+        font-size: 30px;
+    }
+
+    .segment-icon-container.social-icons i {
+        font-size: 30px;
+    }
+}
+
+/* Grow Brand Section */
+.grow-brand-section {
+    background-color: #f7f7f7; /* Light grey background */
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.grow-brand-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: left;
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.grow-brand-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #333;
+}
+
+.grow-brand-title .highlight-red {
+    color: #e30613;
+}
+
+.brand-cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on larger screens */
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px; /* Limit overall width */
+    margin: 0 auto;
+}
+
+.brand-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left within the card */
+    padding: 20px;
+    background-color: white; /* White background for cards */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    transition: transform 0.3s ease;
+    text-align: left; /* Ensure text is left-aligned */
+}
+
+.brand-card:hover {
+    transform: translateY(-5px);
+}
+
+.brand-icon-container {
+    width: 60px;
+    height: 60px;
+    background-color: #f7f7f7; /* Light grey background for icon circle */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #eee; /* Light border */
+}
+
+.brand-icon-container i {
+    font-size: 30px;
+    color: #e30613; /* Red icon color */
+}
+
+.brand-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.brand-card-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Responsive CSS for Grow Brand Section */
+@media (max-width: 1024px) {
+    .grow-brand-section {
+        padding: 60px 20px;
+    }
+
+    .grow-brand-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none; /* Remove underline for mobile header */
+    }
+
+    .grow-brand-header::after { /* Add a centered underline for mobile */
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .grow-brand-title {
+        font-size: 32px;
+    }
+
+    .brand-cards-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+        gap: 20px;
+    }
+
+    .brand-card {
+        align-items: center; /* Center content for tablets */
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .grow-brand-section {
+        padding: 40px 15px;
+    }
+
+    .grow-brand-title {
+        font-size: 28px;
+    }
+
+    .brand-cards-container {
+        grid-template-columns: 1fr; /* 1 column on smaller phones */
+        gap: 15px;
+    }
+
+    .brand-card {
+        padding: 15px;
+    }
+}
+
+/* Customer Testimonials Section */
+.customer-testimonials-section {
+    background-color: white; /* White background */
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.testimonials-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: left;
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.testimonials-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #333;
+}
+
+.testimonials-title .highlight-red {
+    color: #e30613;
+}
+
+.testimonials-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px; /* Limit overall width */
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left within the card */
+    padding: 30px;
+    background-color: #f7f7f7; /* Light grey background for cards */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    text-align: left; /* Ensure text is left-aligned */
+    position: relative;
+    overflow: hidden; /* For the quote icon positioning */
+}
+
+.quote-icon {
+    position: absolute;
+    top: -10px; /* Adjust as needed */
+    left: -10px; /* Adjust as needed */
+    font-size: 120px; /* Large quote icon */
+    color: rgba(227, 6, 19, 0.1); /* Transparent red color */
+    font-family: serif; /* A more classic quote look */
+    z-index: 0;
+    line-height: 1;
+}
+
+.company-logo {
+    margin-bottom: 20px;
+    height: 50px; /* Fixed height for logos */
+    display: flex;
+    align-items: center;
+    position: relative; /* Ensure logo is above quote icon */
+    z-index: 1;
+}
+
+.company-logo img {
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.testimonial-text {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    position: relative; /* Ensure text is above quote icon */
+    z-index: 1;
+}
+
+/* Responsive CSS for Customer Testimonials Section */
+@media (max-width: 1024px) {
+    .customer-testimonials-section {
+        padding: 60px 20px;
+    }
+
+    .testimonials-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none; /* Remove underline for mobile header */
+    }
+
+    .testimonials-header::after { /* Add a centered underline for mobile */
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .testimonials-title {
+        font-size: 32px;
+    }
+
+    .testimonials-cards-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+        gap: 20px;
+    }
+
+    .testimonial-card {
+        padding: 20px;
+    }
+
+    .quote-icon {
+        font-size: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .customer-testimonials-section {
+        padding: 40px 15px;
+    }
+
+    .testimonials-title {
+        font-size: 28px;
+    }
+
+    .testimonials-cards-container {
+        grid-template-columns: 1fr; /* 1 column on smaller phones */
+        gap: 15px;
+    }
+
+    .testimonial-card {
+        padding: 15px;
+        align-items: center; /* Center content on small screens */
+        text-align: center;
+    }
+
+    .company-logo {
+        margin-bottom: 15px;
+    }
+
+    .quote-icon {
+        font-size: 80px;
+        top: -5px;
+        left: -5px;
+    }
+}
+
+/* Other Services Section */
+.other-services-section {
+    background-color: #f7f7f7; /* Light grey background */
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.other-services-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: left;
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.other-services-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #333;
+}
+
+.other-services-title .highlight-red {
+    color: #e30613;
+}
+
+.other-services-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px; /* Limit overall width */
+    margin: 0 auto;
+}
+
+.other-service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left within the card */
+    padding: 20px;
+    background-color: white; /* White background for cards */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    transition: transform 0.3s ease;
+    text-align: left; /* Ensure text is left-aligned */
+}
+
+.other-service-card:hover {
+    transform: translateY(-5px);
+}
+
+.other-service-image-container {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Fixed height for images */
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #eee; /* Placeholder background */
+}
+
+.other-service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Red decorative elements on image corners */
+.other-service-deco-red-top {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 40px;
+    height: 40px;
+    background-color: #e30613;
+    transform: rotate(45deg);
+    border-radius: 4px;
+}
+
+.other-service-deco-red-bottom {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+    background-color: #e30613;
+    transform: rotate(45deg);
+    border-radius: 4px;
+}
+
+.other-service-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.other-service-card-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Responsive CSS for Other Services Section */
+@media (max-width: 1024px) {
+    .other-services-section {
+        padding: 60px 20px;
+    }
+
+    .other-services-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none; /* Remove underline for mobile header */
+    }
+
+    .other-services-header::after { /* Add a centered underline for mobile */
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .other-services-title {
+        font-size: 32px;
+    }
+
+    .other-services-cards-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+        gap: 20px;
+    }
+
+    .other-service-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .other-services-section {
+        padding: 40px 15px;
+    }
+
+    .other-services-title {
+        font-size: 28px;
+    }
+
+    .other-services-cards-container {
+        grid-template-columns: 1fr; /* 1 column on smaller phones */
+        gap: 15px;
+    }
+
+    .other-service-image-container {
+        height: 180px;
+    }
+}
+
+/* PARTINER PAGE STYLE BENEFITS Section */
+/* Benefits Section */
+.benefits-section {
+    background-color: #1a1a1a; /* Dark background */
+    color: white;
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.benefits-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: left;
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.benefits-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.benefits-cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on larger screens */
+    gap: 40px 60px; /* Row gap, column gap */
+    justify-content: center;
+    max-width: 1200px; /* Limit overall width */
+    margin: 0 auto;
+}
+
+.benefit-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left within the card */
+    padding: 20px;
+    text-align: left; /* Ensure text is left-aligned */
+}
+
+.benefit-icon-container {
+    width: 80px;
+    height: 80px;
+    background-color: #e30613; /* Red background for icon */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(227, 6, 19, 0.3); /* Subtle shadow for icon */
+}
+
+.benefit-icon-container i {
+    font-size: 40px;
+    color: white;
+}
+
+.benefit-card-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.benefit-card-description {
+    font-size: 16px;
+    color: #b0b0b0; /* Lighter grey for description */
+    line-height: 1.5;
+}
+
+/* Responsive CSS for Benefits Section */
+@media (max-width: 1024px) {
+    .benefits-section {
+        padding: 60px 20px;
+    }
+
+    .benefits-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none; /* Remove underline for mobile header */
+    }
+
+    .benefits-header::after { /* Add a centered underline for mobile */
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .benefits-title {
+        font-size: 32px;
+    }
+
+    .benefits-cards-container {
+        grid-template-columns: 1fr; /* 1 column on tablets and smaller */
+        gap: 30px;
+    }
+
+    .benefit-card {
+        align-items: center; /* Center content for smaller screens */
+        text-align: center;
+    }
+
+    .benefit-icon-container {
+        width: 70px;
+        height: 70px;
+    }
+
+    .benefit-icon-container i {
+        font-size: 35px;
+    }
+
+    .benefit-card-title {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .benefits-section {
+        padding: 40px 15px;
+    }
+
+    .benefits-title {
+        font-size: 28px;
+    }
+
+    .benefit-card {
+        padding: 15px;
+    }
+}
+
+/* Sign Up Section */
+.signup-section {
+    background-color: white; /* White background */
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.signup-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: left;
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.signup-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #333;
+}
+
+.signup-steps-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on larger screens */
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px; /* Limit overall width */
+    margin: 0 auto;
+}
+
+.signup-step-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.signup-step-image-container {
+    width: 100%;
+    height: 180px; /* Fixed height for images */
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #f7f7f7; /* Light grey background for image container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-step-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure the image fits within the container without cropping */
+    padding: 10px; /* Add some padding to the image itself */
+}
+
+.signup-step-description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Responsive CSS for Sign Up Section */
+@media (max-width: 1024px) {
+    .signup-section {
+        padding: 60px 20px;
+    }
+
+    .signup-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none; /* Remove underline for mobile header */
+    }
+
+    .signup-header::after { /* Add a centered underline for mobile */
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .signup-title {
+        font-size: 32px;
+    }
+
+    .signup-steps-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+        gap: 20px;
+    }
+
+    .signup-step-image-container {
+        height: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .signup-section {
+        padding: 40px 15px;
+    }
+
+    .signup-title {
+        font-size: 28px;
+    }
+
+    .signup-steps-container {
+        grid-template-columns: 1fr; /* 1 column on smaller phones */
+        gap: 15px;
+    }
+
+    .signup-step-image-container {
+        height: 120px;
+    }
+}
+
+/* Partner Testimonials Section */
+.partner-testimonials-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    background-color: #f7f7f7; /* Light grey background */
+    gap: 80px;
+}
+
+.partner-testimonials-content {
+    flex: 1;
+    max-width: 600px;
+    text-align: left;
+    position: relative;
+}
+
+.partner-testimonials-header {
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.partner-testimonials-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #333;
+}
+
+.partner-testimonials-title .highlight-red {
+    color: #e30613;
+}
+
+.partner-quote-icon {
+    font-size: 100px;
+    color: rgba(227, 6, 19, 0.1); /* Transparent red color */
+    font-family: serif;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.partner-testimonial-text {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.partner-testimonial-author {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.partner-testimonial-location {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.partner-testimonial-navigation {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-arrow {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-arrow:hover {
+    background-color: #e30613;
+    color: white;
+    border-color: #e30613;
+}
+
+.partner-testimonials-image-container {
+    position: relative;
+    flex: 1;
+    max-width: 600px;
+    height: 500px; /* Adjust height as needed */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partner-testimonial-image {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.partner-image-deco-red {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 80px;
+    height: 80px;
+    background-color: #e30613;
+    transform: rotate(45deg);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+/* Responsive CSS for Partner Testimonials Section */
+@media (max-width: 1024px) {
+    .partner-testimonials-section {
+        flex-direction: column;
+        gap: 40px;
+        padding: 60px 20px;
+    }
+
+    .partner-testimonials-content {
+        max-width: 100%;
+        text-align: center; /* Center content on smaller screens */
+    }
+
+    .partner-testimonials-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none;
+    }
+
+    .partner-testimonials-header::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .partner-testimonials-title {
+        font-size: 32px;
+    }
+
+    .partner-quote-icon {
+        font-size: 80px;
+        margin: 0 auto 20px; /* Center the quote icon */
+    }
+
+    .partner-testimonial-text,
+    .partner-testimonial-author,
+    .partner-testimonial-location {
+        text-align: center;
+    }
+
+    .partner-testimonial-navigation {
+        justify-content: center; /* Center navigation buttons */
+    }
+
+    .partner-testimonials-image-container {
+        max-width: 100%;
+        height: 350px;
+    }
+
+    .partner-image-deco-red {
+        display: none; /* Hide decorative element on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .partner-testimonials-section {
+        padding: 40px 15px;
+    }
+
+    .partner-testimonials-title {
+        font-size: 28px;
+    }
+
+    .partner-testimonials-image-container {
+        height: 280px;
+    }
+}
+
+/* FAQ Section - Existing styles, no change needed here */
+.faq-section {
+    background-color: white;
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.faq-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: left;
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 3px solid #e30613;
+    display: inline-block;
+}
+
+.faq-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #333;
+}
+
+.faq-title .highlight-red {
+    color: #e30613;
+}
+
+.faq-content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-image-container {
+    flex: 1;
+    max-width: 450px;
+    position: relative;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.faq-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.faq-image-deco-red {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 80px;
+    height: 80px;
+    background-color: #e30613;
+    transform: rotate(45deg);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.faq-accordion-container {
+    flex: 2;
+    max-width: 700px;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.accordion-header {
+    background-color: transparent;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 15px 0;
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.accordion-header:hover {
+    color: #e30613;
+}
+
+.accordion-icon {
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+/* --- IMPORTANT CSS CHANGES START HERE --- */
+.accordion-content {
+    max-height: 0; /* Initially hidden */
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out; /* Smooth transition for height and padding */
+    padding-left: 10px; /* Indent content slightly */
+    padding-top: 0; /* Ensure no top padding when collapsed */
+    padding-bottom: 0; /* Ensure no bottom padding when collapsed */
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 500px; /* Set a large enough value to reveal all content */
+    padding-top: 15px; /* Add padding when active */
+    padding-bottom: 15px; /* Add padding when active */
+}
+
+.accordion-content p {
+    padding: 0; /* Remove padding from the paragraph itself, let parent handle it */
+    color: #555;
+    font-size: 15px;
+    line-height: 1.6;
+}
+/* --- IMPORTANT CSS CHANGES END HERE --- */
+
+
+/* Responsive CSS for FAQ Section - Existing styles, no change needed here */
+@media (max-width: 1024px) {
+    .faq-section {
+        padding: 60px 20px;
+    }
+
+    .faq-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none;
+    }
+
+    .faq-header::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .faq-title {
+        font-size: 32px;
+    }
+
+    .faq-content-wrapper {
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .faq-image-container {
+        max-width: 100%;
+        height: 300px;
+    }
+
+    .faq-accordion-container {
+        max-width: 100%;
+    }
+
+    .faq-image-deco-red {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 40px 15px;
+    }
+
+    .faq-title {
+        font-size: 28px;
+    }
+
+    .faq-image-container {
+        height: 250px;
+    }
+
+    .accordion-header {
+        font-size: 16px;
+        padding: 12px 0;
+    }
+
+    .accordion-content p {
+        font-size: 14px;
+        /* Padding handled by .accordion-content now */
+    }
+}
+
+/* Partner Programs Section */
+.partner-programs-section {
+    background-color: #f7f7f7; /* Light grey background */
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.partner-programs-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: left;
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.partner-programs-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #333;
+}
+
+.partner-programs-title .highlight-red {
+    color: #e30613;
+}
+
+.partner-program-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px; /* Limit overall width */
+    margin: 0 auto;
+}
+
+.partner-program-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left within the card */
+    padding: 20px;
+    background-color: white; /* White background for cards */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    transition: transform 0.3s ease;
+    text-align: left; /* Ensure text is left-aligned */
+}
+
+.partner-program-card:hover {
+    transform: translateY(-5px);
+}
+
+.partner-program-image-container {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Fixed height for images */
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #eee; /* Placeholder background */
+}
+
+.partner-program-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Red decorative elements on image corners */
+.partner-program-deco-red-top {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 40px;
+    height: 40px;
+    background-color: #e30613;
+    transform: rotate(45deg);
+    border-radius: 4px;
+}
+
+.partner-program-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.partner-program-card-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Responsive CSS for Partner Programs Section */
+@media (max-width: 1024px) {
+    .partner-programs-section {
+        padding: 60px 20px;
+    }
+
+    .partner-programs-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none; /* Remove underline for mobile header */
+    }
+
+    .partner-programs-header::after { /* Add a centered underline for mobile */
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .partner-programs-title {
+        font-size: 32px;
+    }
+
+    .partner-program-cards-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+        gap: 20px;
+    }
+
+    .partner-program-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .partner-programs-section {
+        padding: 40px 15px;
+    }
+
+    .partner-programs-title {
+        font-size: 28px;
+    }
+
+    .partner-program-cards-container {
+        grid-template-columns: 1fr; /* 1 column on smaller phones */
+        gap: 15px;
+    }
+
+    .partner-program-image-container {
+        height: 180px;
+    }
+}
+
+/* Partner Programs Benefits Section */
+/* Mission Section */
+.mission-section {
+    background-color: #1a1a1a; /* Dark background */
+    color: white;
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.mission-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: left;
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.mission-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.mission-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left; /* Align text to the left */
+}
+
+.mission-content p {
+    font-size: 16px;
+    color: #b0b0b0; /* Lighter grey for text */
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.mission-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* COMPANY PAGE CSS */
+@media (max-width: 1024px) {
+    .mission-section {
+        padding: 60px 20px;
+    }
+
+    .mission-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none; /* Remove underline for mobile header */
+    }
+
+    .mission-header::after { /* Add a centered underline for mobile */
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .mission-title {
+        font-size: 32px;
+    }
+
+    .mission-content {
+        text-align: center; /* Center text on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .mission-section {
+        padding: 40px 15px;
+    }
+
+    .mission-title {
+        font-size: 28px;
+    }
+}
+
+/* Locations Section */
+.locations-section {
+    background-color: #1a1a1a; /* Dark background */
+    color: white;
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.locations-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: left;
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.locations-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.locations-content-wrapper {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    gap: 60px;
+    max-width: 1200px; /* Limit overall width */
+    margin: 0 auto;
+}
+
+.locations-list {
+    flex: 1;
+    max-width: 500px; /* Adjust max width for the list side */
+    text-align: left;
+}
+
+.location-item {
+    margin-bottom: 30px;
+}
+
+.location-item:last-child {
+    margin-bottom: 0;
+}
+
+.location-city {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 15px; /* Space for the red square */
+}
+
+.location-city::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #e30613;
+    border-radius: 2px;
+}
+
+.location-address {
+    font-size: 16px;
+    color: #b0b0b0; /* Lighter grey for address */
+    line-height: 1.6;
+    padding-left: 15px; /* Align with city text */
+}
+
+.locations-map-container {
+    flex: 1;
+    max-width: 600px; /* Adjust max width for the map side */
+    background-color: white; /* White background for the map container */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Padding around the map image */
+}
+
+.locations-map-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Responsive CSS for Locations Section */
+@media (max-width: 1024px) {
+    .locations-section {
+        padding: 60px 20px;
+    }
+
+    .locations-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none; /* Remove underline for mobile header */
+    }
+
+    .locations-header::after { /* Add a centered underline for mobile */
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .locations-title {
+        font-size: 32px;
+    }
+
+    .locations-content-wrapper {
+        flex-direction: column; /* Stack list and map vertically */
+        gap: 40px;
+        align-items: center; /* Center items when stacked */
+    }
+
+    .locations-list {
+        max-width: 100%; /* Allow list to take full width */
+        text-align: center; /* Center text on tablets */
+    }
+
+    .location-city {
+        padding-left: 0; /* Remove padding for centered text */
+    }
+
+    .location-city::before {
+        left: 50%; /* Center the red square */
+        transform: translate(-50%, -50%);
+    }
+
+    .location-address {
+        padding-left: 0; /* Remove padding for centered text */
+    }
+
+    .locations-map-container {
+        max-width: 100%; /* Allow map container to take full width */
+        height: 400px; /* Adjust height for mobile */
+    }
+}
+
+@media (max-width: 768px) {
+    .locations-section {
+        padding: 40px 15px;
+    }
+
+    .locations-title {
+        font-size: 28px;
+    }
+
+    .location-city {
+        font-size: 20px;
+    }
+
+    .location-address {
+        font-size: 14px;
+    }
+
+    .locations-map-container {
+        height: 300px;
+    }
+}
+
+/* Careers Section */
+.careers-section {
+    background-color: #1a1a1a; /* Dark background */
+    color: white;
+    padding: 80px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+.careers-content {
+    flex: 1;
+    max-width: 600px;
+    text-align: left;
+}
+
+.careers-header {
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    position: relative;
+    border-bottom: 3px solid #e30613; /* Red underline */
+    display: inline-block; /* Make border-bottom only as wide as content */
+}
+
+.careers-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.careers-description {
+    font-size: 16px;
+    color: #b0b0b0; /* Lighter grey for description */
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.careers-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.careers-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background-color: white;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.careers-button:hover {
+    background-color: #e30613;
+    color: white;
+}
+
+.careers-image-container {
+    position: relative;
+    flex: 1;
+    max-width: 600px;
+    height: 400px; /* Fixed height for the image container */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.careers-image {
+    width: 90%; /* Adjust image size within its container */
+    height: 90%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.careers-image-deco-red {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    background-color: #e30613;
+    transform: rotate(45deg);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+/* Responsive CSS for Careers Section */
+@media (max-width: 1024px) {
+    .careers-section {
+        flex-direction: column;
+        gap: 40px;
+        padding: 60px 20px;
+    }
+
+    .careers-content {
+        max-width: 100%;
+        text-align: center; /* Center content on smaller screens */
+    }
+
+    .careers-header {
+        text-align: center;
+        margin: 0 auto 40px;
+        border-bottom: none;
+    }
+
+    .careers-header::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #e30613;
+        margin: 10px auto 0;
+    }
+
+    .careers-title {
+        font-size: 32px;
+    }
+
+    .careers-buttons {
+        justify-content: center; /* Center buttons when stacked */
+    }
+
+    .careers-image-container {
+        max-width: 100%;
+        height: 350px;
+    }
+
+    .careers-image-deco-red {
+        display: none; /* Hide decorative element on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .careers-section {
+        padding: 40px 15px;
+    }
+
+    .careers-title {
+        font-size: 28px;
+    }
+
+    .careers-image-container {
+        height: 280px;
+    }
+
+    .careers-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Delivery Express|service</title>
+    <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="services.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.target.closest('.dropdown');
+            dropdown.classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <a style="text-decoration: none;" class="logo-text" href="index.html">TDE</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav class="nav-links mobile-nav">
+            <a href="services.html" class="nav-item">Services</a>
+            <a href="solutions.html" class="nav-item">Solutions</a>
+            <a href="partiner.html" class="nav-item">Partner</a>
+            <a href="company.html" class="nav-item">Company</a>
+            <a href="track.html" class="nav-item">Track</a>
+            <a href="support.html" class="nav-item">Support</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="dropbtn" onclick="toggleDropdown(event)">Ship Now <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="domestics.html">Direct Ship</a>
+                    <a href="international.html">Busines Shipments</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Notification Bar -->
+    <div class="notification-bar">
+    <div class="ticker-container">
+        <div class="ticker-content">
+            <span>
+                Delhivery does not require OTP or credentials for address confirmation for your delivery.
+            </span>
+            <span>
+                Our Customer Support team is reachable only from our website or app. Login with your phone number and raise your support request with us.
+            </span>
+            <span>
+                SERVICE UPDATES: Beware of emails or communications from any other source.
+            </span>
+        </div>
+        <div class="ticker-content" aria-hidden="true">
+            <span>
+                Delhivery does not require OTP or credentials for address confirmation for your delivery.
+            </span>
+            <span>
+                Our Customer Support team is reachable only from our website or app. Login with your phone number and raise your support request with us.
+            </span>
+            <span>
+                SERVICE UPDATES: Beware of emails or communications from any other source.
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content Herro -->
+<section class="new-hero-section">
+    <div class="hero-image-container">
+        <img src="https://plus.unsplash.com/premium_photo-1664299412781-dc0394417bed?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Two men on a boat in a river, symbolizing logistics and delivery" class="hero-background-image">
+        <div class="hero-overlay-dark"></div>
+    </div>
+    <div class="hero-content">
+        <h1 class="hero-title">UK's **eCommerce** runs on Delhivery's **logistics**</h1>
+        <p class="hero-subtitle">Trusted partner for small businesses, large marketplaces and anyone else looking to send parcels across the country efficiently</p>
+        <a href="#" class="hero-cta-button">
+            Sign Up as a Business <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Express Parcel Section -->
+<section class="express-parcel-section">
+    <div class="express-parcel-content">
+        <h2 class="express-parcel-title">We are UK's largest <span class="highlight-red">Express Parcel</span> player</h2>
+        <p class="express-parcel-description">The Delivery Express's infrastructure and technology power our Express parcel service that caters to eCommerce marketplaces, D2C brands, omnichannel retailers, small and medium industries, large enterprises and consumers.</p>
+        <p class="express-parcel-description">With industry leading TATs and service level adherence, we ensure that your shipments reach more than 99.5% of India's population reliably and effectively.</p>
+    </div>
+    <div class="express-parcel-image-container">
+        <img src="https://plus.unsplash.com/premium_photo-1661726658809-d1722df0dc97?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Person delivering a parcel in a snowy mountain landscape" class="express-parcel-image">
+        <div class="express-parcel-deco-red-top"></div>
+        <div class="express-parcel-deco-red-bottom"></div>
+        <div class="express-parcel-deco-black-top"></div>
+        <div class="express-parcel-deco-black-bottom"></div>
+    </div>
+</section>
+
+<!-- Data Science Section -->
+<section class="data-science-section">
+    <div class="data-science-header">
+        <h2 class="data-science-title">The Delivery Express's <span class="highlight-white">data science capabilities</span> powers a mesh network that determine the most optimal path for your shipments</h2>
+    </div>
+    <div class="data-science-stats-container">
+        <div class="data-science-stat-card">
+            <div class="data-science-icon-container">
+                <i class="fas fa-box-open"></i>
+            </div>
+            <div class="data-science-stat-value">3.4 Bn+</div>
+            <div class="data-science-stat-description">Parcels shipped since inception</div>
+        </div>
+        <div class="data-science-stat-card">
+            <div class="data-science-icon-container">
+                <i class="fas fa-building"></i>
+            </div>
+            <div class="data-science-stat-value">30K+</div>
+            <div class="data-science-stat-description">Businesses served</div>
+        </div>
+        <div class="data-science-stat-card">
+            <div class="data-science-icon-container">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="data-science-stat-value">18,700+</div>
+            <div class="data-science-stat-description">Pin codes covered</div>
+        </div>
+    </div>
+</section>
+
+<!-- Drive Efficiency Section -->
+<section class="drive-efficiency-section">
+    <div class="drive-efficiency-header">
+        <h2 class="drive-efficiency-title">Drive efficiency with scale to reach the remotest corners of India</h2>
+    </div>
+    <div class="efficiency-cards-container">
+        <div class="efficiency-card">
+            <div class="efficiency-icon-container">
+                <i class="fas fa-shipping-fast"></i>
+            </div>
+            <h3 class="efficiency-card-title">Faster shipping</h3>
+            <p class="efficiency-card-description">Reach your customers on industry leading Turn Around Time across Air and Surface modes</p>
+        </div>
+        <div class="efficiency-card">
+            <div class="efficiency-icon-container">
+                <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            <h3 class="efficiency-card-title">Free early COD remittance</h3>
+            <p class="efficiency-card-description">Free up your working capital with next day COD remittance at no additional charges</p>
+        </div>
+        <div class="efficiency-card">
+            <div class="efficiency-icon-container">
+                <i class="fas fa-headset"></i>
+            </div>
+            <h3 class="efficiency-card-title">Faster customer service</h3>
+            <p class="efficiency-card-description">Directly work with our dedicated service representatives to promptly resolve all your queries</p>
+        </div>
+        <div class="efficiency-card">
+            <div class="efficiency-icon-container">
+                <i class="fas fa-clipboard-check"></i>
+            </div>
+            <h3 class="efficiency-card-title">Value added services</h3>
+            <p class="efficiency-card-description">Verify returns at customer's doorstep and improve saleability for your products</p>
+        </div>
+    </div>
+</section>
+
+<!-- Segments Section -->
+<section class="segments-section">
+    <div class="segments-header">
+        <h2 class="segments-title">Segments <span class="highlight-red">we serve</span></h2>
+    </div>
+    <div class="segments-cards-container">
+        <div class="segment-card">
+            <div class="segment-icon-container">
+                <i class="fas fa-store"></i>
+            </div>
+            <h3 class="segment-card-title">D2C brands</h3>
+        </div>
+        <div class="segment-card">
+            <div class="segment-icon-container">
+                <i class="fas fa-building"></i>
+            </div>
+            <h3 class="segment-card-title">Small & medium enterprises</h3>
+        </div>
+        <div class="segment-card">
+            <div class="segment-icon-container">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h3 class="segment-card-title">Marketplaces</h3>
+        </div>
+        <div class="segment-card">
+            <div class="segment-icon-container">
+                <i class="fas fa-university"></i>
+            </div>
+            <h3 class="segment-card-title">Banks & financial institutions</h3>
+        </div>
+        <div class="segment-card">
+            <div class="segment-icon-container social-icons">
+                <i class="fab fa-whatsapp"></i>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+            <h3 class="segment-card-title">Social commerce</h3>
+        </div>
+        <div class="segment-card">
+            <div class="segment-icon-container">
+                <i class="fas fa-user"></i>
+            </div>
+            <h3 class="segment-card-title">Personal Shipping</h3>
+        </div>
+    </div>
+</section>
+
+<!-- Grow Brand Section -->
+<section class="grow-brand-section">
+    <div class="grow-brand-header">
+        <h2 class="grow-brand-title">Grow your brand through our <span class="highlight-red">technology driven</span> logistics platform</h2>
+    </div>
+    <div class="brand-cards-container">
+        <div class="brand-card">
+            <div class="brand-icon-container">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <h3 class="brand-card-title">API integration</h3>
+            <p class="brand-card-description">Seamlessly integrate your sales channels (like Website, Marketplaces) with our built in integrations</p>
+        </div>
+        <div class="brand-card">
+            <div class="brand-icon-container">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="brand-card-title">RTO Predictor</h3>
+            <p class="brand-card-description">Over 2 Billion shipments have trained our Machine Learning algorithms to call out potential RTOs</p>
+        </div>
+        <div class="brand-card">
+            <div class="brand-icon-container">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="brand-card-title">Address validation</h3>
+            <p class="brand-card-description">Increase deliverability using our address intelligence products to validate and standardise</p>
+        </div>
+        <div class="brand-card">
+            <div class="brand-icon-container">
+                <i class="fas fa-clipboard-list"></i>
+            </div>
+            <h3 class="brand-card-title">Non Delivery Management</h3>
+            <p class="brand-card-description">Reduce Return-To-Origin using our WhatsApp communication services and business intelligence product suite</p>
+        </div>
+    </div>
+</section>
+
+<!-- Other Services Section -->
+<section class="other-services-section">
+    <div class="other-services-header">
+        <h2 class="other-services-title">Explore other <span class="highlight-red">Services</span></h2>
+    </div>
+    <div class="other-services-cards-container">
+        <div class="other-service-card">
+            <div class="other-service-image-container">
+                <img src="https://images.unsplash.com/photo-1632121869060-0e54c85474b8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Warehousing" class="other-service-image">
+                <div class="other-service-deco-red-top"></div>
+                <div class="other-service-deco-red-bottom"></div>
+            </div>
+            <h3 class="other-service-card-title">Warehousing</h3>
+            <p class="other-service-card-description">We store inventory across highly optimised locations across the country to fulfil orders originating across both B2C and B2B channels of sale</p>
+        </div>
+        <div class="other-service-card">
+            <div class="other-service-image-container">
+                <img src="https://images.unsplash.com/photo-1616861771635-49063a4636ed?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cross Border Shipping" class="other-service-image">
+                <div class="other-service-deco-red-top"></div>
+                <div class="other-service-deco-red-bottom"></div>
+            </div>
+            <h3 class="other-service-card-title">Cross Border</h3>
+            <p class="other-service-card-description">Get door-to-door, port-to-port Express Parcel and Freight services from India to 220+ countries. Our strategic partners include FedEx and Aramex</p>
+        </div>
+        <div class="other-service-card">
+            <div class="other-service-image-container">
+                <img src="https://plus.unsplash.com/premium_photo-1677401495278-8c7fffe00792?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Data Intelligence" class="other-service-image">
+                <div class="other-service-deco-red-top"></div>
+                <div class="other-service-deco-red-bottom"></div>
+            </div>
+            <h3 class="other-service-card-title">Data Intelligence</h3>
+            <p class="other-service-card-description">Power your business with India's most accurate location intelligence stack. Improve delivery success and gain deep insights about user generated addresses and RTOs</p>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-logo">
+                <span class="logo-text">DELHIVERY</span>
+                <div class="footer-meta">
+                    <p>ISO 9001: 2015, ISO 27001: 2022 Certified Company</p>
+                    <p>CIN: L63090DL2011PLC221234</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-links-container">
+            <div class="footer-column">
+                <h3>SERVICES</h3>
+                <ul>
+                    <li><a href="#">Express Parcel</a></li>
+                    <li><a href="#">Warehousing</a></li>
+                    <li><a href="#">Part Truckload</a></li>
+                    <li><a href="#">Full Truckload</a></li>
+                    <li><a href="#">Cross Border</a></li>
+                    <li><a href="#">Data Intelligence</a></li>
+                    <li><a href="#">Software Platform</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>SOLUTIONS</h3>
+                <ul>
+                    <li><a href="#">D2C Brands</a></li>
+                    <li><a href="#">Personal Courier</a></li>
+                    <li><a href="#">B2B Enterprises</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>PARTNERS</h3>
+                <ul>
+                    <li><a href="#">Franchise Opportunities</a></li>
+                    <li><a href="#">Delivery Partner</a></li>
+                    <li><a href="#">Fleet Owner</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Governance</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">ODR Portal</a></li>
+                    <li><a href="#">Press Release</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>GET IN TOUCH</h3>
+                <ul>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Raise a query</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Rate Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>POLICIES</h3>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Fraud Disclaimer</a></li>
+                    <li><a href="#">ONDC Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

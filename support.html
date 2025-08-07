@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Delivery Express | Support</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="support.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.target.closest('.dropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        // Accordion functionality for FAQs
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionItem = header.closest('.accordion-item');
+                    
+                    // Toggle the 'active' class on the accordion item
+                    accordionItem.classList.toggle('active');
+                    // Also toggle 'active' on the header itself for the icon rotation
+                    header.classList.toggle('active'); 
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <a style="text-decoration: none;" class="logo-text" href="/index.html">TDS</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+      <nav class="nav-links mobile-nav">
+            <a href="services.html" class="nav-item">Services</a>
+            <a href="solutions.html" class="nav-item">Solutions</a>
+            <a href="partiner.html" class="nav-item">Partner</a>
+            <a href="company.html" class="nav-item">Company</a>
+            <a href="track.html" class="nav-item">Track</a>
+            <a href="support.html" class="nav-item">Support</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="dropbtn" onclick="toggleDropdown(event)">Ship Now <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="domestics.html">Direct Ship</a>
+                    <a href="international.html">Busines Shipments</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Notification Bar -->
+    <div class="notification-bar">
+    <div class="ticker-container">
+        <div class="ticker-content">
+            <span>
+                Delhivery does not require OTP or credentials for address confirmation for your delivery.
+            </span>
+            <span>
+                Our Customer Support team is reachable only from our website or app. Login with your phone number and raise your support request with us.
+            </span>
+            <span>
+                SERVICE UPDATES: Beware of emails or communications from any other source.
+            </span>
+        </div>
+        <div class="ticker-content" aria-hidden="true">
+            <span>
+                Delhivery does not require OTP or credentials for address confirmation for your delivery.
+            </span>
+            <span>
+                Our Customer Support team is reachable only from our website or app. Login with your phone number and raise your support request with us.
+            </span>
+            <span>
+                SERVICE UPDATES: Beware of emails or communications from any other source.
+            </span>
+        </div>
+    </div>
+</div>
+
+    <main>
+        <!-- Support Hero Section -->
+        <section class="support-hero-section">
+            <div class="support-hero-content">
+                <h1 class="support-hero-title">How can we <span class="highlight-red">help you</span> today?</h1>
+                <p class="support-hero-subtitle">Find answers to your questions or get in touch with our support team.</p>
+                <div class="support-search-bar">
+                    <input type="text" placeholder="Search for answers...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section class="contact-us-section">
+            <div class="contact-us-header">
+                <h2 class="contact-us-title">Get in <span class="highlight-red">Touch</span></h2>
+            </div>
+            <div class="contact-channels-container">
+                <div class="contact-channel-card">
+                    <div class="contact-icon-circle"><i class="fas fa-phone-alt"></i></div>
+                    <h3>Call Us</h3>
+                    <p>For urgent queries, speak to our representatives.</p>
+                    <a href="tel:+91-1234567890" class="contact-link">+91-1234567890</a>
+                </div>
+                <div class="contact-channel-card">
+                    <div class="contact-icon-circle"><i class="fas fa-envelope"></i></div>
+                    <h3>Email Support</h3>
+                    <p>Send us your detailed query via email.</p>
+                    <a href="mailto:support@deliveryexpress.com" class="contact-link">support@deliveryexpress.com</a>
+                </div>
+                <div class="contact-channel-card">
+                    <div class="contact-icon-circle"><i class="fas fa-comments"></i></div>
+                    <h3>Live Chat</h3>
+                    <p>Chat with a support agent in real-time.</p>
+                    <a href="#" class="contact-link">Start Chat</a>
+                </div>
+                <div class="contact-channel-card">
+                    <div class="contact-icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Visit Us</h3>
+                    <p>Find our nearest service point.</p>
+                    <a href="#" class="contact-link">Store Locator</a>
+                ></div>
+            </div>
+        </section>
+
+        <!-- Support Topics Section -->
+        <section class="support-topics-section">
+            <div class="support-topics-header">
+                <h2 class="support-topics-title">Common <span class="highlight-red">Support Topics</span></h2>
+            </div>
+            <div class="support-topics-grid">
+                <a href="#" class="topic-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Shipment Tracking</h3>
+                </a>
+                <a href="#" class="topic-card">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Delivery Issues</h3>
+                </a>
+                <a href="#" class="topic-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Payment & Billing</h3>
+                </a>
+                <a href="#" class="topic-card">
+                    <i class="fas fa-user-circle"></i>
+                    <h3>Account Management</h3>
+                </a>
+                <a href="#" class="topic-card">
+                    <i class="fas fa-undo-alt"></i>
+                    <h3>Returns & Refunds</h3>
+                </a>
+                <a href="#" class="topic-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Partner Onboarding</h3>
+                </a>
+            </div>
+        </section>
+
+        <!-- Raise a Query Section -->
+        <section class="raise-query-section">
+            <div class="raise-query-content">
+                <div class="raise-query-header">
+                    <h2 class="raise-query-title">Can't find your answer? <span class="highlight-red">Raise a Query</span></h2>
+                </div>
+                <form class="query-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-query-button">Submit Query <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </section>
+
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-logo">
+                <span class="logo-text">The Delivery Express</span>
+                <div class="footer-meta">
+                    <p>ISO 9001: 2015, ISO 27001: 2022 Certified Company</p>
+                    <p>CIN: L63090DL2011PLC221234</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-links-container">
+            <div class="footer-column">
+                <h3>SERVICES</h3>
+                <ul>
+                    <li><a href="#">Express Parcel</a></li>
+                    <li><a href="#">Warehousing</a></li>
+                    <li><a href="#">Part Truckload</a></li>
+                    <li><a href="#">Full Truckload</a></li>
+                    <li><a href="#">Cross Border</a></li>
+                    <li><a href="#">Data Intelligence</a></li>
+                    <li><a href="#">Software Platform</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>SOLUTIONS</h3>
+                <ul>
+                    <li><a href="#">D2C Brands</a></li>
+                    <li><a href="#">Personal Courier</a></li>
+                    <li><a href="#">B2B Enterprises</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>PARTNERS</h3>
+                <ul>
+                    <li><a href="#">Franchise Opportunities</a></li>
+                    <li><a href="#">Delivery Partner</a></li>
+                    <li><a href="#">Fleet Owner</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Governance</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">ODR Portal</a></li>
+                    <li><a href="#">Press Release</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>GET IN TOUCH</h3>
+                <ul>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Raise a query</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Rate Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>POLICIES</h3>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Fraud Disclaimer</a></li>
+                    <li><a href="#">ONDC Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

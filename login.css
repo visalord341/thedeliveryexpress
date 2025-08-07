@@ -1,0 +1,481 @@
+        /* Basic Reset and Font (ensure these are in your style.css) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background-color: #fff;
+            line-height: 1.5;
+        }
+
+        /* Navbar (from your existing code) */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2b2b2b;
+            padding: 15px 40px;
+            color: white;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            z-index: 100;
+        }
+
+        .hamburger .bar {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-item, .dropbtn {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item:hover, .dropbtn:hover {
+            color: #e30613;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #3e3e3e;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e30613;
+        }
+
+        .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        /* Notification Bar (from your existing code) */
+        .notification-bar {
+            background-color: #e30613;
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .ticker-content {
+            display: flex;
+            align-items: center;
+            gap: 150px;
+            padding-left: 100%;
+            animation: ticker-move 30s linear infinite;
+        }
+        
+        .notification-bar:hover .ticker-content {
+            animation-play-state: paused;
+        }
+        
+        @keyframes ticker-move {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-200%);
+            }
+        }
+
+        /* New Section: Create Account */
+        .create-account-section {
+            display: flex;
+            min-height: 100vh;
+            background-color: #fcf7f2; /* Light peach background */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .create-account-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .create-account-left h2 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 40px;
+            line-height: 1.2;
+            max-width: 400px;
+        }
+
+        .create-account-left img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .create-account-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .registration-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: left;
+        }
+
+        .registration-card h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group input[type="tel"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="password"]:focus,
+        .form-group input[type="tel"]:focus {
+            border-color: #e30613;
+        }
+
+        .phone-input-group {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .phone-input-group span {
+            padding: 12px 15px;
+            background-color: #f0f0f0;
+            border-right: 1px solid #ddd;
+            color: #555;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .phone-input-group input {
+            border: none;
+            border-radius: 0;
+            flex-grow: 1;
+        }
+
+        .password-input-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+            font-size: 18px;
+        }
+
+        .password-validation {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .password-validation p {
+            margin-bottom: 5px;
+        }
+
+        .password-validation .valid {
+            color: green;
+        }
+
+        .password-validation .invalid {
+            color: red;
+        }
+
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .terms-checkbox input[type="checkbox"] {
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+
+        .terms-checkbox a {
+            color: #e30613;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .create-account-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-account-button:hover {
+            background-color: #e30613;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .login-link a {
+            color: #e30613;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .other-options {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .other-options p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .option-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .option-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .option-button:hover {
+            background-color: #f0f0f0;
+            border-color: #ccc;
+        }
+
+        .option-button i {
+            margin-right: 8px;
+            color: #e30613;
+        }
+
+        .message-box {
+            background-color: #fefcbf;
+            border: 1px solid #f7d08a;
+            color: #8a6d3b;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 15px;
+            display: none; /* Hidden by default */
+        }
+        .message-box.error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .message-box.success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        /* Responsive CSS */
+        @media (max-width: 1024px) {
+            .create-account-section {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .create-account-left, .create-account-right {
+                padding: 30px 20px;
+                width: 100%;
+            }
+
+            .create-account-left h2 {
+                font-size: 38px;
+                margin-bottom: 30px;
+            }
+
+            .registration-card {
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .create-account-left h2 {
+                font-size: 32px;
+            }
+
+            .registration-card h2 {
+                font-size: 28px;
+            }
+
+            .form-group input,
+            .phone-input-group span,
+            .phone-input-group input {
+                padding: 10px 12px;
+                font-size: 15px;
+            }
+
+            .password-toggle {
+                font-size: 16px;
+            }
+
+            .password-validation,
+            .terms-checkbox,
+            .login-link,
+            .other-options p,
+            .option-button {
+                font-size: 13px;
+            }
+
+            .create-account-button {
+                padding: 12px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .create-account-section {
+                padding: 20px 15px;
+            }
+
+            .create-account-left h2 {
+                font-size: 28px;
+            }
+
+            .registration-card {
+                padding: 25px;
+            }
+
+            .registration-card h2 {
+                font-size: 24px;
+            }
+
+            .option-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
