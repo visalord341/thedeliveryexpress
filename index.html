@@ -442,12 +442,13 @@
         let selectedTrackingField = 'mobile';
         let geocoder;
 
-        const placeholders = {
-            'Mobile': 'Enter Mobile Number',
-            'AWB': 'Enter AWB Number',
-            'Order Id': 'Enter Order ID',
-            'LRN': 'Enter LRN Number'
-        };
+       const placeholders = {
+  'mobile': 'Enter Mobile Number',
+  'awb': 'Enter AWB Number',
+  'orderId': 'Enter Order ID',
+  'lrn': 'Enter LRN Number'
+};
+
 
         // This function is the callback for the Google Maps API
         function initMap() {
@@ -456,21 +457,20 @@
         }
 
         options.forEach(option => {
-            option.addEventListener('click', () => {
-                options.forEach(opt => opt.classList.remove('active'));
-                option.classList.add('active');
+  option.addEventListener('click', () => {
+    options.forEach(opt => opt.classList.remove('active'));
+    option.classList.add('active');
 
-                const selected = option.textContent.trim();
-                inputField.placeholder = placeholders[selected] || 'Enter value';
+    const selectedType = option.dataset.type || 'mobile';
+    selectedTrackingField = selectedType;
 
-                selectedTrackingField = {
-                    'Mobile': 'mobile',
-                    'AWB': 'awb',
-                    'Order Id': 'orderId',
-                    'LRN': 'lrn'
-                }[selected] || 'mobile';
-            });
-        });
+    inputField.placeholder = placeholders[selectedType] || 'Enter value';
+
+    otpButton.style.display = 'inline-block';
+  });
+});
+
+
 
         document.addEventListener('DOMContentLoaded', () => {
             const activeOption = document.querySelector('.track-option.active');
@@ -555,6 +555,8 @@
                                 <p><strong>Description:</strong> ${data.description || 'N/A'}</p>
                                 <p style="font-size: 12px; color: gray;">Created at: ${createdAt}</p>
                                 <p>❌ Map could not be loaded for this location.</p>
+                                <div id="map" style="height: 400px; width: 100%;"></div>
+
                             `;
                             showTrackingResult(errorHtml);
                             console.error('Geocode was not successful for the following reason: ' + status);
@@ -570,6 +572,90 @@
         }
 
         otpButton.addEventListener('click', searchTracking);
+
+        
     </script>
+    <script>
+  function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: 6.5244, lng: 3.3792 }, // Example: Lagos
+      zoom: 12,
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0EgKGfShZD-TqL7zyVp5S1ErB13tUgMg&callback=initMap&libraries=places" async defer></script>
+<script>
+  function showTrackingResult(content, locationData = null) {
+    const popup = document.getElementById('result-popup');
+    const resultBody = document.getElementById('popup-result-body');
+
+    let mapDiv = `<div id="map" style="height: 300px; width: 100%; margin-top: 10px;"></div>`;
+    resultBody.innerHTML = content + mapDiv;
+
+    popup.style.display = 'flex';
+
+    if (locationData) {
+      initMap(locationData.lat, locationData.lng);
+    }
+  }
+
+  function initMap(lat = 6.5244, lng = 3.3792) {
+    const map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat, lng },
+      zoom: 14,
+    });
+
+    new google.maps.Marker({
+      position: { lat, lng },
+      map,
+      title: "Location",
+    });
+  }
+
+  function searchTracking() {
+    const inputValue = inputField.value.trim();
+    if (!inputValue) {
+      showTrackingResult("❌ Please enter a valid value.");
+      return;
+    }
+
+    db.collection("orders")
+      .where(selectedTrackingField, "==", inputValue)
+      .get()
+      .then(snapshot => {
+        if (snapshot.empty) {
+          showTrackingResult("❌ No record found.");
+          return;
+        }
+
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const createdAt = data.createdAt?.toDate().toLocaleString() || "N/A";
+
+          const content = `
+            <h3>📦 Tracking Info</h3>
+            <p><strong>Status:</strong> ${data.status}</p>
+            <p><strong>Location:</strong> ${data.location}</p>
+            <p><strong>ETA:</strong> ${data.eta}</p>
+            <p><strong>AWB:</strong> ${data.awb}</p>
+            <p><strong>Order ID:</strong> ${data.orderId}</p>
+            <p><strong>Mobile:</strong> ${data.mobile}</p>
+            <p><strong>Description:</strong> ${data.description}</p>
+            <p style="font-size: 12px; color: gray;">Created at: ${createdAt}</p>
+          `;
+
+          const lat = data.lat || 6.5244;  // default if missing
+          const lng = data.lng || 3.3792;
+
+          showTrackingResult(content, { lat, lng });
+        });
+      })
+      .catch(error => {
+        console.error(error);
+        showTrackingResult("❌ Error occurred while searching.");
+      });
+  }
+</script>
+
 </body>
 </html>
