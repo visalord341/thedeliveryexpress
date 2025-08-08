@@ -43,7 +43,7 @@
                 <a href="#" class="dropbtn" onclick="toggleDropdown(event)">Ship Now <i class="fas fa-chevron-down"></i></a>
                 <div class="dropdown-content">
                     <a href="domestics.html">Direct Ship</a>
-                    <a href="international.html">Busines Shipments</a>
+                    <a href="login.html">Busines Shipments</a>
                 </div>
             </div>
         </nav>
@@ -106,32 +106,33 @@
             </div>
         </div>
     </div>
-    <div class="track-card-container">
-        <div class="track-card">
-            <h2>Track your order through</h2>
-            <div class="tracking-options">
-                <span class="track-option active">Mobile</span>
-                <span class="track-option">AWB</span>
-                <span class="track-option">Order Id</span>
-                <span class="track-option">LRN</span>
-            </div>
-            <div class="tracking-form">
-                <input type="text" id="tracking-input" placeholder="Enter Mobile Number">
-                <button class="otp-button">Get OTP</button>
-            </div>
-            <div class="app-downloads">
-                <p>DOWNLOAD OUR APP</p>
-                <div class="app-buttons">
-                    <a href="#" class="app-button">
-                        <i class="fab fa-google-play"></i> Google Play
-                    </a>
-                    <a href="#" class="app-button">
-                        <i class="fab fa-apple"></i> App Store
-                    </a>
+         <div class="track-card-container">
+            <div class="track-card">
+                <h2>Track your order through</h2>
+
+                <div class="tracking-options">
+                    <span class="track-option active" data-type="mobile">Mobile</span>
+                    <span class="track-option" data-type="awb">AWB</span>
+                    <span class="track-option" data-type="orderId">Order Id</span>
+                    <span class="track-option" data-type="lrn">LRN</span>
                 </div>
+
+                <div class="tracking-form">
+                    <input type="text" id="tracking-input" placeholder="Enter Mobile Number">
+                    <button class="otp-button" onclick="searchTracking()">Get Location</button>
+                </div>
+
+                <div class="app-downloads">
+                    <p>DOWNLOAD OUR APP</p>
+                    <div class="app-buttons">
+                        <a href="#" class="app-button"><i class="fab fa-google-play"></i> Google Play</a>
+                        <a href="#" class="app-button"><i class="fab fa-apple"></i> App Store</a>
+                    </div>
+                </div>
+
+                <div id="searchResult" style="margin-top: 20px; display: none; padding: 15px; background: #f5f5f5; border-radius: 10px;"></div>
             </div>
         </div>
-    </div>
 </main>
 
 <!-- FAQ Details Section -->
@@ -275,45 +276,148 @@
         </div>
     </footer>
     
+    <div id="result-popup" class="popup-container" style="display: none;">
+        <div class="popup-content" style="max-width:900px;width:90vw;">
+            <span class="popup-close" id="result-popup-close">&times;</span>
+            <div id="popup-result-body"></div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
     <script>
-  const options = document.querySelectorAll('.track-option');
-  const inputField = document.getElementById('tracking-input');
-  const otpButton = document.querySelector('.otp-button');
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.target.closest('.dropdown');
+            dropdown.classList.toggle('active');
+        }
 
-  const placeholders = {
-    'Mobile': 'Enter Mobile Number',
-    'AWB': 'Enter AWB Number',
-    'Order Id': 'Enter Order ID',
-    'LRN': 'Enter LRN Number'
-  };
+        window.onload = function() {
+            const popup = document.getElementById('popup-container');
+            const closeBtn = document.querySelector('.popup-close');
+            popup.style.display = 'flex';
+            closeBtn.onclick = function() { popup.style.display = 'none'; }
+            window.onclick = function(event) {
+                if (event.target === popup) popup.style.display = 'none';
+            }
+            document.querySelector('.btn-primary').onclick = function() { popup.style.display = 'none'; };
+            document.querySelector('.btn-secondary').onclick = function() { popup.style.display = 'none'; };
+        };
 
-  const showOtp = (label) => label === 'Mobile';
+        document.getElementById('result-popup-close').onclick = function () {
+            document.getElementById('result-popup').style.display = 'none';
+        }
+        window.addEventListener('click', function (e) {
+            const popup = document.getElementById('result-popup');
+            if (e.target === popup) popup.style.display = 'none';
+        });
 
-  options.forEach(option => {
-    option.addEventListener('click', () => {
-      // Remove active class from all
-      options.forEach(opt => opt.classList.remove('active'));
-      option.classList.add('active');
+        // Tracking logic
+        const options = document.querySelectorAll('.track-option');
+        const inputField = document.getElementById('tracking-input');
+        const otpButton = document.querySelector('.otp-button');
+        const resultPopup = document.getElementById('result-popup');
+        const resultBody = document.getElementById('popup-result-body');
+        let selectedTrackingField = 'mobile';
+        const placeholders = {
+            'mobile': 'Enter Mobile Number',
+            'awb': 'Enter AWB Number',
+            'orderId': 'Enter Order ID',
+            'lrn': 'Enter LRN Number'
+        };
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                options.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                const selectedType = option.dataset.type || 'mobile';
+                selectedTrackingField = selectedType;
+                inputField.placeholder = placeholders[selectedType] || 'Enter value';
+                otpButton.style.display = 'inline-block';
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const activeOption = document.querySelector('.track-option.active');
+            if (activeOption) activeOption.click();
+        });
 
-      const selected = option.textContent.trim();
+        // Firebase initialization
+        const firebaseConfig = {
+            apiKey: "AIzaSyA13edmqgi4_LG-FNW1yN50HTuhtXUes0g",
+            authDomain: "travis-d095c.firebaseapp.com",
+            projectId: "travis-d095c",
+            storageBucket: "travis-d095c.appspot.com",
+            messagingSenderId: "169773464605",
+            appId: "1:169773464605:web:90584cfa67f8875fc65af4",
+            measurementId: "G-Z24WRV168F"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
-      // Update placeholder
-      inputField.placeholder = placeholders[selected] || 'Enter value';
+        function showTrackingResult(content) {
+            resultBody.innerHTML = content;
+            resultPopup.style.display = 'flex';
+        }
+        function formatLogs(logs) {
+            if (!Array.isArray(logs) || logs.length === 0) return "<li>No logs available.</li>";
+            return logs.map(log =>
+                `<li>
+                    ${log.status ? `<strong>${log.status}</strong>` : ''}
+                    ${log.location ? ` <span>📍 ${log.location}</span>` : ''}
+                    ${log.datetime ? ` <span>🕒 ${log.datetime}</span>` : ''}
+                </li>`
+            ).join("");
+        }
 
-      // Show or hide OTP button based on selected option
-      if (showOtp(selected)) {
-        otpButton.style.display = 'inline-block';
-      } else {
-        otpButton.style.display = 'none';
-      }
-    });
-  });
-
-// Optional: trigger initial setup
-document.addEventListener('DOMContentLoaded', () => {
-  const activeOption = document.querySelector('.track-option.active');
-  if (activeOption) activeOption.click();
-});
-</script>
+        async function searchTracking() {
+            const inputValue = inputField.value.trim();
+            showTrackingResult("🔍 Searching...");
+            if (!inputValue) {
+                showTrackingResult("❌ Please enter a valid value.");
+                return;
+            }
+            try {
+                const snapshot = await db.collection("orders").where(selectedTrackingField, "==", inputValue).get();
+                if (snapshot.empty) {
+                    showTrackingResult("❌ No record found.");
+                    return;
+                }
+                const data = snapshot.docs[0].data();
+                const createdAt = data.createdAt?.toDate().toLocaleString() || "N/A";
+                // Show all fields including admin ones!
+                const infoHtml = `
+                    <h3>📦 Full Delivery Tracking Information</h3>
+                    <table style="width:100%;border-collapse:collapse">
+                        <tr><th style="text-align:left;">Tracking Number / AWB / Order ID</th><td>${data.awb || data.orderId || 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">Current Status</th><td>${data.status || 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">Last Known Location</th><td>${data.location || 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">Estimated Delivery Time (ETA)</th><td>${data.eta || 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">Sender Name/Company</th><td>${data.senderName || 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">Recipient Name/Initials</th><td>${data.recipientName || 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">Recipient Signature</th><td>${data.recipientSignature || 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">Weight (kg)</th><td>${data.weight || 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">Dimensions (cm)</th><td>${data.dimensions || 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">Delivery Attempts</th><td>${typeof data.deliveryAttempts === 'number' ? data.deliveryAttempts : 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">Description</th><td>${data.description || 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">Mobile Number</th><td>${data.mobile || 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">LRN Number</th><td>${data.lrn || 'N/A'}</td></tr>
+                        <tr><th style="text-align:left;">Order ID</th><td>${data.orderId || 'N/A'}</td></tr>
+                    </table>
+                    <strong style="display:block;margin:10px 0 5px 0;">Shipment History / Tracking Logs:</strong>
+                    <ul style="margin:0 0 10px 15px;">${formatLogs(data.logs)}</ul>
+                    <p style="font-size: 12px; color: gray;">Created at: ${createdAt}</p>
+                `;
+                showTrackingResult(infoHtml);
+            } catch (error) {
+                console.error("Error fetching tracking info:", error);
+                showTrackingResult("❌ Error occurred while searching. Please try again.");
+            }
+        }
+        otpButton.addEventListener('click', searchTracking);
+    </script>
 </body>
 </html>

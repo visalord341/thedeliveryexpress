@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Delivery Express | Login</title>
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -409,7 +409,7 @@
                 <a href="#" class="dropbtn" onclick="toggleDropdown(event)">Ship Now <i class="fas fa-chevron-down"></i></a>
                 <div class="dropdown-content">
                     <a href="domestics.html">Direct Ship</a>
-                    <a href="international.html">Busines Shipments</a>
+                    <a href="login.html">Busines Shipments</a>
                 </div>
             </div>
         </nav>
@@ -442,7 +442,7 @@
     </div>
 </div>
 
-    <main>
+     <main>
         <section class="login-section">
             <div class="login-left">
                 <h2>Get your business shipments moving</h2>
@@ -469,122 +469,82 @@
                         </div>
                         <button type="submit" class="login-button">Login</button>
                     </form>
-                    <p class="signup-link">Don't have an account? <a href="/pages/auth/signup.html">Sign Up</a></p>
-                </div>
+            <p class="signup-link">
+  Don't have an account? 
+  <a href="mailto:admin@deliveryexpress.org" id="adminEmail" style="cursor:pointer;">Contact Admin</a>
+        </p>                </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-top">
-            <div class="footer-logo">
-                <span class="logo-text">The Delivery Express</span>
-                <div class="footer-meta">
-                    <p>ISO 9001: 2015, ISO 27001: 2022 Certified Company</p>
-                    <p>CIN: L63090DL2011PLC221234</p>
-                </div>
-            </div>
-        </div>
-        <div class="footer-links-container">
-            <div class="footer-column">
-                <h3>SERVICES</h3>
-                <ul>
-                    <li><a href="#">Express Parcel</a></li>
-                    <li><a href="#">Warehousing</a></li>
-                    <li><a href="#">Part Truckload</a></li>
-                    <li><a href="#">Full Truckload</a></li>
-                    <li><a href="#">Cross Border</a></li>
-                    <li><a href="#">Data Intelligence</a></li>
-                    <li><a href="#">Software Platform</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>SOLUTIONS</h3>
-                <ul>
-                    <li><a href="#">D2C Brands</a></li>
-                    <li><a href="#">Personal Courier</a></li>
-                    <li><a href="#">B2B Enterprises</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>PARTNERS</h3>
-                <ul>
-                    <li><a href="#">Franchise Opportunities</a></li>
-                    <li><a href="#">Delivery Partner</a></li>
-                    <li><a href="#">Fleet Owner</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>COMPANY</h3>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Governance</a></li>
-                    <li><a href="#">Investor Relations</a></li>
-                    <li><a href="#">ODR Portal</a></li>
-                    <li><a href="#">Press Release</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>GET IN TOUCH</h3>
-                <ul>
-                    <li><a href="#">Support</a></li>
-                    <li><a href="#">Raise a query</a></li>
-                    <li><a href="#">Store Locator</a></li>
-                    <li><a href="#">Rate Calculator</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>POLICIES</h3>
-                <ul>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                    <li><a href="#">Fraud Disclaimer</a></li>
-                    <li><a href="#">ONDC Disclaimer</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+    <!------------ EMAIL COPY AND OPEN-->
+<script>
+  // Add copy to clipboard and "open email" options on click
+  document.getElementById('adminEmail').addEventListener('click', function(e) {
+    e.preventDefault();
+    const email = "admin@deliveryexpress.org";
+    // Show custom menu
+    const menu = document.createElement('div');
+    menu.style.position = 'fixed';
+    menu.style.background = '#fff';
+    menu.style.border = '1px solid #ccc';
+    menu.style.padding = '10px';
+    menu.style.borderRadius = '8px';
+    menu.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+    menu.style.top = (e.clientY + 10) + 'px';
+    menu.style.left = (e.clientX + 10) + 'px';
+    menu.style.zIndex = 9999;
+    menu.innerHTML = `
+      <button id="copyEmailBtn" style="margin-bottom:8px;width:100%;">Copy</button>
+      <button id="openEmailBtn" style="width:100%;">Open Email</button>
+    `;
+    document.body.appendChild(menu);
+
+    // Remove menu on outside click
+    function removeMenu(ev) {
+      if (!menu.contains(ev.target)) {
+        menu.remove();
+        document.removeEventListener('mousedown', removeMenu);
+      }
+    }
+    document.addEventListener('mousedown', removeMenu);
+
+    // Copy Email
+    document.getElementById('copyEmailBtn').onclick = function() {
+      navigator.clipboard.writeText(email);
+      menu.innerHTML = "<span style='color:green;'>Copied!</span>";
+      setTimeout(() => menu.remove(), 1200);
+    };
+    // Open Email
+    document.getElementById('openEmailBtn').onclick = function() {
+      window.location.href = "mailto:" + email;
+      menu.remove();
+    };
+  });
+</script>
+    <!-- ... footer unchanged ... -->
 
     <!-- Firebase SDKs -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, signInWithCustomToken, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase configuration (provided by Canvas environment)
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA13edmqgi4_LG-FNW1yN50HTuhtXUes0g",
+            authDomain: "travis-d095c.firebaseapp.com",
+            projectId: "travis-d095c",
+            storageBucket: "travis-d095c.appspot.com",
+            messagingSenderId: "169773464605",
+            appId: "1:169773464605:web:90584cfa67f8875fc65af4",
+            measurementId: "G-Z24WRV168F"
+        };
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-
-        let userId = null; // To store the current user's UID
-
-        // Authenticate with custom token or anonymously
-        async function authenticateFirebase() {
-            try {
-                if (initialAuthToken) {
-                    const userCredential = await signInWithCustomToken(auth, initialAuthToken);
-                    userId = userCredential.user.uid;
-                    console.log("Signed in with custom token:", userId);
-                } else {
-                    const userCredential = await signInAnonymously(auth);
-                    userId = userCredential.user.uid;
-                    console.log("Signed in anonymously:", userId);
-                }
-            } catch (error) {
-                console.error("Firebase authentication error:", error);
-                displayMessage("Firebase authentication failed. Please try again later.", "error");
-            }
-        }
-
-        // Call authentication on load
-        authenticateFirebase();
 
         // Get form elements
         const loginForm = document.getElementById('login-form');
@@ -596,11 +556,11 @@
         // Function to display messages
         function displayMessage(message, type = 'info') {
             messageBox.textContent = message;
-            messageBox.className = `message-box ${type}`; // Reset classes and add new type
+            messageBox.className = `message-box ${type}`;
             messageBox.style.display = 'block';
             setTimeout(() => {
                 messageBox.style.display = 'none';
-            }, 5000); // Hide after 5 seconds
+            }, 4000); // Hide after 4 seconds
         }
 
         // Password visibility toggle
@@ -621,15 +581,19 @@
             try {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
-                userId = user.uid; // Update userId with the logged-in user's UID
 
                 displayMessage("Login successful! Redirecting...", "success");
-                // You can add a redirect here, e.g.:
-                // setTimeout(() => { window.location.href = '/dashboard.html'; }, 2000);
+
+                // If this is the admin, redirect to admin dashboard
+                if (email.toLowerCase() === "admin@deliveryexpress.org") {
+                    setTimeout(() => { window.location.href = 'admin_page.html'; }, 1500);
+                } else {
+                    // Otherwise, redirect to user dashboard or another page
+                    setTimeout(() => { window.location.href = 'admin_page.html'; }, 1500);
+                }
 
                 // Clear form
                 loginForm.reset();
-
             } catch (error) {
                 console.error("Error logging in:", error);
                 let errorMessage = "Login failed. Please check your email and password.";

@@ -6,6 +6,7 @@
   <title>Admin Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,6 +16,20 @@
     .profile img { width: 60px; border-radius: 50%; margin-bottom: 10px; }
     .profile h3 { font-size: 18px; }
     .profile p { font-size: 13px; color: #ccc; }
+    .logout-btn {
+      margin-top: 20px;
+      padding: 10px 32px;
+      border-radius: 8px;
+      border: none;
+      background: #dc3545;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.2s;
+      width: 100%;
+    }
+    .logout-btn:hover { background: #bb2d3b; }
     .main { flex: 1; padding: 30px; }
     .metrics { display: flex; gap: 20px; margin-bottom: 30px; }
     .card { flex: 1; background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
@@ -111,6 +126,7 @@
       <h3>THE DELIVERY EXPRESS</h3>
       <p>Admin</p>
     </div>
+    <button class="logout-btn" id="logoutBtn">Logout</button>
   </div>
 
   <div class="main">
@@ -166,6 +182,17 @@
 
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    // Logout functionality
+    document.getElementById('logoutBtn').onclick = function() {
+      auth.signOut().then(function() {
+        window.location.href = "/login.html";
+      }).catch(function(error) {
+        alert("Logout failed: " + error.message);
+        console.error("Logout Error:", error);
+      });
+    };
 
     let editingId = null;
 
@@ -187,7 +214,7 @@
         document.getElementById("orderId").value = data.orderId || '';
         document.getElementById("lrn").value = data.lrn || '';
         document.getElementById("status").value = data.status || '';
-        document.getElementById("eta").value = data.eta || '';
+        document.getElementById("eta").value = data.eta ? formatDateInput(data.eta) : '';
         document.getElementById("location").value = data.location || '';
         document.getElementById("senderName").value = data.senderName || '';
         document.getElementById("recipientName").value = data.recipientName || '';
@@ -205,6 +232,20 @@
       document.getElementById('modal-action-btn').onclick = editingId ? updateGoods : registerGoods;
     }
 
+    function formatDateInput(dateObj) {
+      if (!dateObj) return '';
+      if (typeof dateObj === 'string') return dateObj.substring(0,10);
+      if (dateObj.toDate) {
+        // Firestore Timestamp object
+        const date = dateObj.toDate();
+        return date.toISOString().substring(0,10);
+      }
+      if (dateObj instanceof Date) {
+        return dateObj.toISOString().substring(0,10);
+      }
+      return '';
+    }
+
     function parseLogs(logsText) {
       return logsText.split('\n').map(line => {
         const [status, location, datetime] = line.split('|').map(x=>x?.trim()||'');
@@ -216,13 +257,16 @@
     }
 
     function registerGoods() {
+      const etaInput = document.getElementById("eta").value;
+      const etaDate = etaInput ? new Date(etaInput) : null;
+
       const data = {
         mobile: document.getElementById("mobile").value.trim(),
         awb: document.getElementById("awb").value.trim(),
         orderId: document.getElementById("orderId").value.trim(),
         lrn: document.getElementById("lrn").value.trim(),
         status: document.getElementById("status").value.trim(),
-        eta: document.getElementById("eta").value.trim(),
+        eta: etaDate,
         location: document.getElementById("location").value.trim(),
         senderName: document.getElementById("senderName").value.trim(),
         recipientName: document.getElementById("recipientName").value.trim(),
@@ -252,25 +296,26 @@
 
     function updateGoods() {
       if (!editingId) return;
-      const data = {
-  mobile: document.getElementById("mobile").value.trim() || null,
-  awb: document.getElementById("awb").value.trim() || null,
-  orderId: document.getElementById("orderId").value.trim() || null,
-  lrn: document.getElementById("lrn").value.trim() || null,
-  status: document.getElementById("status").value.trim() || null,
-  eta: document.getElementById("eta").value ? new Date(document.getElementById("eta").value) : null,
-  location: document.getElementById("location").value.trim() || null,
-  senderName: document.getElementById("senderName").value.trim() || null,
-  recipientName: document.getElementById("recipientName").value.trim() || null,
-  recipientSignature: document.getElementById("recipientSignature").value.trim() || null,
-  weight: document.getElementById("weight").value.trim() || null,
-  dimensions: document.getElementById("dimensions").value.trim() || null,
-  deliveryAttempts: Number(document.getElementById("deliveryAttempts").value) || 0,
-  description: document.getElementById("description").value.trim() || null,
-  logs: parseLogs(document.getElementById("logs").value),
-  createdAt: new Date()
-};
+      const etaInput = document.getElementById("eta").value;
+      const etaDate = etaInput ? new Date(etaInput) : null;
 
+      const data = {
+        mobile: document.getElementById("mobile").value.trim(),
+        awb: document.getElementById("awb").value.trim(),
+        orderId: document.getElementById("orderId").value.trim(),
+        lrn: document.getElementById("lrn").value.trim(),
+        status: document.getElementById("status").value.trim(),
+        eta: etaDate,
+        location: document.getElementById("location").value.trim(),
+        senderName: document.getElementById("senderName").value.trim(),
+        recipientName: document.getElementById("recipientName").value.trim(),
+        recipientSignature: document.getElementById("recipientSignature").value.trim(),
+        weight: document.getElementById("weight").value.trim(),
+        dimensions: document.getElementById("dimensions").value.trim(),
+        deliveryAttempts: Number(document.getElementById("deliveryAttempts").value),
+        description: document.getElementById("description").value.trim(),
+        logs: parseLogs(document.getElementById("logs").value),
+      };
 
       db.collection("orders").doc(editingId).set(data, {merge:true})
         .then(() => {
@@ -311,16 +356,17 @@
           snapshot.forEach(doc => {
             const data = doc.data();
             const createdAt = data.createdAt?.toDate().toLocaleString() || "N/A";
+            const etaDisplay = data.eta && data.eta.toDate ? data.eta.toDate().toLocaleDateString() :
+                               (typeof data.eta === "string" ? data.eta : "N/A");
             const item = document.createElement("div");
             item.className = "history-item";
-            // --- THIS IS THE SECTION YOU ASKED FOR! ---
             item.innerHTML = `
               <h5>📦 ${data.orderId || 'N/A'} - ${data.status || 'N/A'}</h5>
               <table class="delivery-info-table">
                 <tr><th>Tracking Number / AWB / Order ID</th><td>${data.awb || data.orderId || 'N/A'}</td></tr>
                 <tr><th>Current Status</th><td>${data.status || 'N/A'}</td></tr>
                 <tr><th>Last Known Location</th><td>${data.location || 'N/A'}</td></tr>
-                <tr><th>Estimated Delivery Time (ETA)</th><td>${data.eta || 'N/A'}</td></tr>
+                <tr><th>Estimated Delivery Time (ETA)</th><td>${etaDisplay}</td></tr>
                 <tr><th>Sender</th><td>${data.senderName || 'N/A'}</td></tr>
                 <tr><th>Recipient</th><td>${data.recipientName || 'N/A'}</td></tr>
                 <tr><th>Recipient Signature</th><td>${data.recipientSignature || 'N/A'}</td></tr>
