@@ -361,6 +361,35 @@
         </div>
     </footer>
 
+    <!-- Floating Chat Button -->
+<div id="chat-float-btn" style="position:fixed;bottom:30px;right:30px;z-index:9999;">
+    <button id="open-chat-btn" style="border-radius:50%;background:#e53935;color:#fff;padding:18px 20px;border:none;box-shadow:0 2px 6px rgba(0,0,0,0.2);font-size:26px;cursor:pointer;">
+        <i class="fas fa-comments"></i>
+    </button>
+</div>
+
+<!-- Chat Popup -->
+<div id="chat-popup" style="display:none;position:fixed;bottom:100px;right:30px;width:350px;max-width:95vw;z-index:10000;background:#fff;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.2);overflow:hidden;">
+    <div style="background:#e53935;padding:12px 16px;color:#fff;font-weight:500;display:flex;align-items:center;justify-content:space-between;">
+        <span><i class="fas fa-comments"></i> Chat Support</span>
+        <span id="close-chat-btn" style="cursor:pointer;font-size:20px;">&times;</span>
+    </div>
+    <div style="padding:10px;max-height:340px;overflow-y:auto;" id="chat-admin-list">
+        <strong>Select an admin to chat:</strong>
+        <ul id="admin-list" style="list-style:none;padding:0;margin:10px 0;">
+            <!-- Admins will be rendered here -->
+        </ul>
+    </div>
+    <div id="chat-section" style="display:none;padding:10px;max-height:340px;overflow-y:auto;">
+        <div id="chat-messages" style="min-height:120px;max-height:160px;overflow-y:auto;background:#f9f9f9;border-radius:6px;padding:8px;margin-bottom:8px;"></div>
+        <div>
+            <input type="text" id="chat-input" placeholder="Type your message..." style="width:72%;padding:6px 8px;border-radius:6px;border:1px solid #ddd;">
+            <button id="send-msg-btn" style="background:#e53935;color:#fff;border:none;padding:7px 14px;border-radius:6px;cursor:pointer;">Send</button>
+        </div>
+        <button id="back-to-admins" style="background:none;color:#e53935;border:none;margin-top:6px;cursor:pointer;font-size:13px;">&#8592; Back to admin list</button>
+    </div>
+</div>
+    
     <div id="result-popup" class="popup-container" style="display: none;">
         <div class="popup-content" style="max-width:900px;width:90vw;">
             <span class="popup-close" id="result-popup-close">&times;</span>
@@ -503,6 +532,139 @@
             }
         }
         otpButton.addEventListener('click', searchTracking);
+    </script>
+
+    <script>
+    // --- USER SIDE CHAT LOGIC: Full and Correct for chatting with admin ---
+// Firebase should already be initialized above
+
+// Unique user ID (per browser/session)
+let currentUserId = localStorage.getItem("chatUserId");
+if (!currentUserId) {
+  currentUserId = "guest_" + Math.floor(Math.random()*1000000);
+  localStorage.setItem("chatUserId", currentUserId);
+}
+
+// Admin list (static demo)
+const adminList = [
+  { id: 'admin1', name: 'Alice Smith', avatar: 'https://randomuser.me/api/portraits/women/68.jpg' },
+  { id: 'admin2', name: 'Bob Johnson', avatar: 'https://randomuser.me/api/portraits/men/44.jpg' }
+];
+
+// UI elements
+const openChatBtn = document.getElementById('open-chat-btn');
+const chatPopup = document.getElementById('chat-popup');
+const closeChatBtn = document.getElementById('close-chat-btn');
+const adminListUl = document.getElementById('admin-list');
+const chatSection = document.getElementById('chat-section');
+const chatAdminList = document.getElementById('chat-admin-list');
+const chatMessages = document.getElementById('chat-messages');
+const chatInput = document.getElementById('chat-input');
+const sendMsgBtn = document.getElementById('send-msg-btn');
+const backToAdminsBtn = document.getElementById('back-to-admins');
+
+let selectedAdmin = null;
+let unsubscribeUserChat = null;
+
+// Render admin list
+function renderAdmins() {
+  adminListUl.innerHTML = '';
+  adminList.forEach(admin => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:7px 0;">
+        <img src="${admin.avatar}" style="width:32px;height:32px;border-radius:50%;border:1px solid #eee;">
+        <span style="font-weight:500;">${admin.name}</span>
+      </div>
+    `;
+    li.onclick = () => openChatWithAdmin(admin);
+    adminListUl.appendChild(li);
+  });
+}
+
+// Show chat popup
+openChatBtn.onclick = function() {
+  chatPopup.style.display = 'block';
+  renderAdmins();
+  chatSection.style.display = 'none';
+  chatAdminList.style.display = 'block';
+};
+
+// Close chat popup
+closeChatBtn.onclick = function() {
+  chatPopup.style.display = 'none';
+};
+
+// Clicking outside chat popup closes it
+window.addEventListener('click', function(event) {
+  if (event.target === chatPopup) chatPopup.style.display = 'none';
+});
+
+// Open chat with selected admin
+function openChatWithAdmin(admin) {
+  selectedAdmin = admin;
+  chatMessages.innerHTML = `<div style="text-align:center;font-size:13px;margin-bottom:5px;color:#e53935;"><strong>Chatting with ${admin.name}</strong></div>`;
+  chatSection.style.display = 'block';
+  chatAdminList.style.display = 'none';
+
+  // Listen for messages in this user's chat
+  if (unsubscribeUserChat) unsubscribeUserChat();
+  unsubscribeUserChat = db.collection("chats")
+    .doc(currentUserId)
+    .collection("messages")
+    .orderBy("timestamp")
+    .onSnapshot(snapshot => {
+      chatMessages.innerHTML = `<div style="text-align:center;font-size:13px;margin-bottom:5px;color:#e53935;"><strong>Chatting with ${admin.name}</strong></div>`;
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        appendMessage(data.sender === "user" ? "You" : admin.name, data.text, data.sender === "user");
+      });
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    });
+}
+
+// Back to admin list
+backToAdminsBtn.onclick = function() {
+  chatSection.style.display = 'none';
+  chatAdminList.style.display = 'block';
+  selectedAdmin = null;
+  if (unsubscribeUserChat) unsubscribeUserChat();
+}
+
+// Send message as user
+sendMsgBtn.onclick = function() {
+  const msg = chatInput.value.trim();
+  if (!msg || !selectedAdmin) return;
+
+  db.collection("chats")
+    .doc(currentUserId)
+    .collection("messages")
+    .add({
+      sender: "user",
+      text: msg,
+      adminId: selectedAdmin.id,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+  chatInput.value = "";
+};
+
+// Render message bubbles
+function appendMessage(sender, text, isUser) {
+  const msgDiv = document.createElement('div');
+  msgDiv.style = `margin:5px 0;padding:6px 10px;border-radius:7px;max-width:80%;font-size:14px;`;
+  msgDiv.style.background = isUser ? '#e53935' : '#eee';
+  msgDiv.style.color = isUser ? '#fff' : '#222';
+  msgDiv.style.alignSelf = isUser ? 'flex-end' : 'flex-start';
+  msgDiv.innerHTML = `<span style="font-weight:500">${sender}:</span> ${text}`;
+  chatMessages.appendChild(msgDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Enter to send
+chatInput.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') sendMsgBtn.click();
+});
     </script>
 </body>
 </html>

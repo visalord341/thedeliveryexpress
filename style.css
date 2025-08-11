@@ -1243,3 +1243,22 @@ body {
   font-size: 24px;
   cursor: pointer;
 }
+
+/* Floating chat button hover effect */
+#open-chat-btn:hover {
+    background: #b71c1c;
+}
+
+/* Chat popup scrollbar styling */
+#chat-popup::-webkit-scrollbar,
+#chat-section::-webkit-scrollbar,
+#chat-admin-list::-webkit-scrollbar {
+    width: 6px;
+    background: #f1f1f1;
+}
+#chat-popup::-webkit-scrollbar-thumb,
+#chat-section::-webkit-scrollbar-thumb,
+#chat-admin-list::-webkit-scrollbar-thumb {
+    background: #e53935;
+    border-radius: 6px;
+}
