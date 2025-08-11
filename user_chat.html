@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Chat - Delivery Express</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #f0f2fc; }
+    .chat-container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      height: 80vh;
+    }
+    .chat-header { background: #2f2b65; color: white; padding: 18px; font-size: 18px; font-weight: 600; border-top-left-radius: 16px; border-top-right-radius: 16px; text-align: center; }
+    .chat-messages { flex: 1; padding: 20px; overflow-y: auto; background: #f8f9fa; border-bottom: 1px solid #eee; }
+    .chat-input-area { display: flex; padding: 18px; gap: 10px; background: #f0f2fc; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; }
+    .chat-input { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; }
+    .chat-send-btn { background: #2f2b65; color: white; border: none; border-radius: 8px; padding: 10px 24px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .chat-send-btn:hover { background: #221b4d; }
+    .msg-row { margin-bottom: 8px; display: flex; }
+    .msg-user { background: #007bff; color: white; align-self: flex-end; padding: 10px 16px; border-radius: 12px 12px 0 12px; max-width: 75%; word-break: break-word; margin-left: auto; }
+    .msg-admin { background: #eee; color: #333; align-self: flex-start; padding: 10px 16px; border-radius: 12px 12px 12px 0; max-width: 75%; word-break: break-word; margin-right: auto; }
+    .chat-footer { text-align: center; padding: 10px; font-size: 13px; color: #888; }
+    @media (max-width: 600px) { .chat-container { width: 98vw; margin: 10px auto; } .chat-header { font-size: 15px; } }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">💬 Chat with Admin</div>
+    <div id="chatMessages" class="chat-messages"></div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" class="chat-input" placeholder="Type your message..." autocomplete="off" />
+      <button id="chatSend" class="chat-send-btn">Send</button>
+    </div>
+    <div class="chat-footer">Delivery Express Customer Support</div>
+  </div>
+  <script>
+    // FIREBASE CONFIG - same as admin
+    const firebaseConfig = {
+      apiKey: "AIzaSyA13edmqgi4_LG-FNW1yN50HTuhtXUes0g",
+      authDomain: "travis-d095c.firebaseapp.com",
+      projectId: "travis-d095c",
+      storageBucket: "travis-d095c.appspot.com",
+      messagingSenderId: "169773464605",
+      appId: "1:169773464605:web:90584cfa67f8875fc65af4",
+      measurementId: "G-Z24WRV168F"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+    let userId = null;
+    // Simple anonymous login (or replace with regular login if you want)
+    auth.onAuthStateChanged(async user => {
+      if (user) {
+        userId = user.uid;
+        startChat();
+      } else {
+        await auth.signInAnonymously();
+      }
+    });
+    function startChat() {
+      db.collection("chats")
+        .doc(userId)
+        .collection("messages")
+        .orderBy("timestamp")
+        .onSnapshot(snapshot => {
+          const messagesDiv = document.getElementById("chatMessages");
+          messagesDiv.innerHTML = "";
+          snapshot.forEach(doc => {
+            const msg = doc.data();
+            const isUser = msg.sender === "user";
+            const msgClass = isUser ? "msg-user" : "msg-admin";
+            messagesDiv.innerHTML += `<div class="msg-row"><div class="${msgClass}">${msg.text}</div></div>`;
+          });
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        });
+    }
+    document.getElementById("chatSend").onclick = async () => {
+      const input = document.getElementById("chatInput");
+      const text = input.value.trim();
+      if (!text || !userId) return;
+      await db.collection("chats")
+        .doc(userId)
+        .collection("messages")
+        .add({
+          sender: "user",
+          text: text,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      input.value = "";
+    };
+    document.getElementById("chatInput").addEventListener("keyup", function(e){
+      if (e.key === "Enter") document.getElementById("chatSend").click();
+    });
+  </script>
+</body>
+</html>

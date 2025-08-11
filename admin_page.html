@@ -120,6 +120,29 @@
   </style>
 </head>
 <body>
+  <!-------------------- CHAT BOLT -->
+  <div class="container-fluid mt-3">
+  <div class="row">
+    <!-- Users List -->
+    <div class="col-md-4 border-end" style="height:85vh; overflow-y:auto;">
+      <h5 class="p-2">Users</h5>
+      <ul id="adminUserList" class="list-group"></ul>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="col-md-8 d-flex flex-column" style="height:85vh;">
+      <div id="adminChatHeader" class="bg-danger text-white p-2 fw-bold">
+        Select a user to start chatting
+      </div>
+      <div id="adminChatMessages" class="flex-grow-1 p-3" style="overflow-y:auto; background:#f8f9fa;"></div>
+      <div class="d-flex border-top">
+        <input type="text" id="adminChatInput" class="form-control" placeholder="Type a message...">
+        <button id="adminChatSend" class="btn btn-danger">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <div class="sidebar">
     <div class="profile">
       <img src="https://i.pravatar.cc/100?img=12" alt="Admin Avatar" />
@@ -410,5 +433,73 @@
 
     window.onload = loadHistory;
   </script>
+  
+  <script>
+let selectedUserId = null;
+let unsubscribeMessages = null;
+
+// Load users who have chat history
+db.collection("chats").onSnapshot(snapshot => {
+    const userList = document.getElementById("adminUserList");
+    userList.innerHTML = "";
+    snapshot.forEach(doc => {
+        const li = document.createElement("li");
+        li.className = "list-group-item list-group-item-action";
+        li.textContent = doc.id;
+        li.style.cursor = "pointer";
+        li.onclick = () => openAdminChat(doc.id);
+        userList.appendChild(li);
+    });
+});
+
+// Open chat for a selected user
+function openAdminChat(userId) {
+    selectedUserId = userId;
+    document.getElementById("adminChatHeader").textContent = "Chat with: " + userId;
+    const chatMessages = document.getElementById("adminChatMessages");
+    chatMessages.innerHTML = "";
+
+    if (unsubscribeMessages) unsubscribeMessages();
+
+    unsubscribeMessages = db.collection("chats")
+        .doc(userId)
+        .collection("messages")
+        .orderBy("timestamp")
+        .onSnapshot(snapshot => {
+            chatMessages.innerHTML = "";
+            snapshot.forEach(doc => {
+                const msg = doc.data();
+                const align = msg.sender === "admin" ? "text-end" : "text-start";
+                const bg = msg.sender === "admin" ? "bg-danger text-white" : "bg-light";
+                chatMessages.innerHTML += `
+                    <div class="${align} my-1">
+                        <span class="d-inline-block p-2 rounded ${bg}" style="max-width:80%;">
+                            ${msg.text}
+                        </span>
+                    </div>
+                `;
+            });
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+}
+
+// Send message as admin
+document.getElementById("adminChatSend").onclick = async () => {
+    const input = document.getElementById("adminChatInput");
+    const text = input.value.trim();
+    if (!text || !selectedUserId) return;
+
+    await db.collection("chats")
+        .doc(selectedUserId)
+        .collection("messages")
+        .add({
+            sender: "admin",
+            text: text,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+    input.value = "";
+};
+</script>
 </body>
 </html>
