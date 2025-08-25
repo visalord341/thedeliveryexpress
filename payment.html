@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .wallet {
+      margin: 15px 0;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #fafafa;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .wallet:hover {
+      background: #e6f7ff;
+      border-color: #0099ff;
+    }
+
+    .wallet span {
+      display: block;
+      font-size: 14px;
+      margin-top: 8px;
+      color: #555;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .bank-details span {
+      display: block;
+      margin: 8px 0;
+      font-size: 15px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Payment Options</h2>
+
+    <div class="wallet">
+      <strong>Solana Wallet</strong>
+      <span>3ATcAfhrjtGPwzJoukg3ymkme7qpJ68iKgpxukhP3Ed2</span>
+    </div>
+
+    <div class="wallet">
+      <strong>Bitcoin Wallet</strong>
+      <span>bc1qjphts266zpgv3uvawvtarqhkq7zc0en6j8ft4q</span>
+    </div>
+
+    <div class="wallet">
+      <strong>Ethereum Wallet</strong>
+      <span>0x0B4A1234C6Be8Db5c27D0EE84bA47A1dB598f199</span>
+    </div>
+
+    <div class="wallet" id="bankBtn">
+      <strong>Bank Account</strong>
+      <span>Click to View</span>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="bankModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h3>Bank Account Details</h3>
+      <div class="bank-details">
+        <span><b>Bank:</b> Wells Fargo</span>
+        <span><b>Account Name:</b>  Idoko   Oloche Sule </span>
+        <span><b>Account Number:</b> 40630255428749687 </span>
+        <span><b>SWIFT Code:</b> WFBIUS6S </span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const bankBtn = document.getElementById("bankBtn");
+    const bankModal = document.getElementById("bankModal");
+    const closeModal = document.getElementById("closeModal");
+
+    bankBtn.addEventListener("click", () => {
+      bankModal.style.display = "flex";
+    });
+
+    closeModal.addEventListener("click", () => {
+      bankModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === bankModal) {
+        bankModal.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
